@@ -15,7 +15,8 @@ internal open class Pair<out F, out S>(val first: F, val second: S) {
 
 // Some useful subclasses for convenience
 
-internal class SolvedPQ(p: Long, q: Long) : Pair<BigInteger, BigInteger>(BigInteger.valueOf(Math.min(p, q)), BigInteger.valueOf(Math.max(p, q))) {
+internal class SolvedPQ(p: Long, q: Long) :
+    Pair<BigInteger, BigInteger>(BigInteger.valueOf(Math.min(p, q)), BigInteger.valueOf(Math.max(p, q))) {
     val p = first
     val q = second
 }

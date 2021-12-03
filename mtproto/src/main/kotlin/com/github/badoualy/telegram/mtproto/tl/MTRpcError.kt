@@ -1,6 +1,9 @@
 package com.github.badoualy.telegram.mtproto.tl
 
-import com.github.badoualy.telegram.tl.StreamUtils.*
+import com.github.badoualy.telegram.tl.StreamUtils.readInt
+import com.github.badoualy.telegram.tl.StreamUtils.readTLString
+import com.github.badoualy.telegram.tl.StreamUtils.writeInt
+import com.github.badoualy.telegram.tl.StreamUtils.writeString
 import com.github.badoualy.telegram.tl.TLContext
 import com.github.badoualy.telegram.tl.core.TLObject
 import java.io.IOException

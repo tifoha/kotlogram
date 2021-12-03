@@ -1,6 +1,12 @@
 package com.github.badoualy.telegram.api.utils
 
-import com.github.badoualy.telegram.tl.api.*
+import com.github.badoualy.telegram.tl.api.TLAbsMessage
+import com.github.badoualy.telegram.tl.api.TLAbsPeer
+import com.github.badoualy.telegram.tl.api.TLDocument
+import com.github.badoualy.telegram.tl.api.TLDocumentAttributeSticker
+import com.github.badoualy.telegram.tl.api.TLMessage
+import com.github.badoualy.telegram.tl.api.TLMessageMediaDocument
+import com.github.badoualy.telegram.tl.api.TLMessageService
 
 val TLAbsMessage?.date: Int
     get() = when (this) {
@@ -46,7 +52,7 @@ val TLAbsMessage.isSticker: Boolean
 
 fun TLAbsMessage.getStickerAlt() = when (isSticker) {
     true -> ((this as? TLMessage)?.media as? TLMessageMediaDocument)?.document?.asDocument?.attributes
-            ?.filterIsInstance<TLDocumentAttributeSticker>()?.first()?.alt
+        ?.filterIsInstance<TLDocumentAttributeSticker>()?.first()?.alt
     false -> null
 }
 

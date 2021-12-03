@@ -1,7 +1,9 @@
 package com.github.badoualy.telegram.mtproto.tl.auth
 
-class DhGenFailure @JvmOverloads constructor(nonce: ByteArray = ByteArray(0), serverNonce: ByteArray = ByteArray(0),
-                                             newNonceHash: ByteArray = ByteArray(0)) : DhGenResult(nonce, serverNonce, newNonceHash) {
+class DhGenFailure @JvmOverloads constructor(
+    nonce: ByteArray = ByteArray(0), serverNonce: ByteArray = ByteArray(0),
+    newNonceHash: ByteArray = ByteArray(0)
+) : DhGenResult(nonce, serverNonce, newNonceHash) {
 
     override fun getConstructorId(): Int {
         return CONSTRUCTOR_ID

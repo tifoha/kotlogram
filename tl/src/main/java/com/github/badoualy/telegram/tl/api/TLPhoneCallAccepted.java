@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLBytes;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,22 +24,14 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLBytesSerial
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPhoneCallAccepted extends TLAbsPhoneCall {
-
     public static final int CONSTRUCTOR_ID = 0x6d003d3f;
-
-    protected long accessHash;
-
-    protected int date;
-
-    protected int adminId;
-
-    protected int participantId;
-
-    protected TLBytes gB;
-
-    protected TLPhoneCallProtocol protocol;
-
     private final String _constructor = "phoneCallAccepted#6d003d3f";
+    protected long accessHash;
+    protected int date;
+    protected int adminId;
+    protected int participantId;
+    protected TLBytes gB;
+    protected TLPhoneCallProtocol protocol;
 
     public TLPhoneCallAccepted() {
     }

@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,28 +23,17 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLChatInvite extends TLAbsChatInvite {
-
     public static final int CONSTRUCTOR_ID = 0xdb74f558;
-
-    protected int flags;
-
-    protected boolean channel;
-
-    protected boolean broadcast;
-
-    protected boolean _public;
-
-    protected boolean megagroup;
-
-    protected String title;
-
-    protected TLAbsChatPhoto photo;
-
-    protected int participantsCount;
-
-    protected TLVector<TLAbsUser> participants;
-
     private final String _constructor = "chatInvite#db74f558";
+    protected int flags;
+    protected boolean channel;
+    protected boolean broadcast;
+    protected boolean _public;
+    protected boolean megagroup;
+    protected String title;
+    protected TLAbsChatPhoto photo;
+    protected int participantsCount;
+    protected TLVector<TLAbsUser> participants;
 
     public TLChatInvite() {
     }

@@ -6,7 +6,6 @@ import com.github.badoualy.telegram.tl.api.TLImportedContact;
 import com.github.badoualy.telegram.tl.core.TLLongVector;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,16 +20,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLImportedContacts extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xad524315;
-
-    protected TLVector<TLImportedContact> imported;
-
-    protected TLLongVector retryContacts;
-
-    protected TLVector<TLAbsUser> users;
-
     private final String _constructor = "contacts.importedContacts#ad524315";
+    protected TLVector<TLImportedContact> imported;
+    protected TLLongVector retryContacts;
+    protected TLVector<TLAbsUser> users;
 
     public TLImportedContacts() {
     }

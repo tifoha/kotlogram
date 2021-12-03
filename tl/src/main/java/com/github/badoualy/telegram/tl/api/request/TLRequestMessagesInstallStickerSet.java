@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsInputStickerSet;
 import com.github.badoualy.telegram.tl.api.messages.TLAbsStickerSetInstallResult;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -22,14 +21,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesInstallStickerSet extends TLMethod<TLAbsStickerSetInstallResult> {
-
     public static final int CONSTRUCTOR_ID = 0xc78fe460;
-
-    protected TLAbsInputStickerSet stickerset;
-
-    protected boolean archived;
-
     private final String _constructor = "messages.installStickerSet#c78fe460";
+    protected TLAbsInputStickerSet stickerset;
+    protected boolean archived;
 
     public TLRequestMessagesInstallStickerSet() {
     }
@@ -47,9 +42,7 @@ public class TLRequestMessagesInstallStickerSet extends TLMethod<TLAbsStickerSet
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAbsStickerSetInstallResult)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAbsStickerSetInstallResult) response;
     }

@@ -4,7 +4,6 @@ import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.TLAbsStickerSetCovered;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,14 +20,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLArchivedStickers extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x4fcba9c8;
-
-    protected int count;
-
-    protected TLVector<TLAbsStickerSetCovered> sets;
-
     private final String _constructor = "messages.archivedStickers#4fcba9c8";
+    protected int count;
+    protected TLVector<TLAbsStickerSetCovered> sets;
 
     public TLArchivedStickers() {
     }

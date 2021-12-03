@@ -7,7 +7,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsInputUser;
 import com.github.badoualy.telegram.tl.api.messages.TLBotResults;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,22 +26,14 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesGetInlineBotResults extends TLMethod<TLBotResults> {
-
     public static final int CONSTRUCTOR_ID = 0x514e999d;
-
-    protected int flags;
-
-    protected TLAbsInputUser bot;
-
-    protected TLAbsInputPeer peer;
-
-    protected TLAbsInputGeoPoint geoPoint;
-
-    protected String query;
-
-    protected String offset;
-
     private final String _constructor = "messages.getInlineBotResults#514e999d";
+    protected int flags;
+    protected TLAbsInputUser bot;
+    protected TLAbsInputPeer peer;
+    protected TLAbsInputGeoPoint geoPoint;
+    protected String query;
+    protected String offset;
 
     public TLRequestMessagesGetInlineBotResults() {
     }
@@ -63,9 +54,7 @@ public class TLRequestMessagesGetInlineBotResults extends TLMethod<TLBotResults>
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLBotResults)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLBotResults) response;
     }

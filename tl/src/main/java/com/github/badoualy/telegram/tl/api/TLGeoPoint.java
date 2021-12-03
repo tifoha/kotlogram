@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,14 +15,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_DOUBLE;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLGeoPoint extends TLAbsGeoPoint {
-
     public static final int CONSTRUCTOR_ID = 0x2049d70c;
-
-    protected double _long;
-
-    protected double lat;
-
     private final String _constructor = "geoPoint#2049d70c";
+    protected double _long;
+    protected double lat;
 
     public TLGeoPoint() {
     }

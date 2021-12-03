@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsBotInlineResult;
 import com.github.badoualy.telegram.tl.api.TLInlineBotSwitchPM;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -30,24 +29,15 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLBotResults extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xccd3563d;
-
-    protected int flags;
-
-    protected boolean gallery;
-
-    protected long queryId;
-
-    protected String nextOffset;
-
-    protected TLInlineBotSwitchPM switchPm;
-
-    protected TLVector<TLAbsBotInlineResult> results;
-
-    protected int cacheTime;
-
     private final String _constructor = "messages.botResults#ccd3563d";
+    protected int flags;
+    protected boolean gallery;
+    protected long queryId;
+    protected String nextOffset;
+    protected TLInlineBotSwitchPM switchPm;
+    protected TLVector<TLAbsBotInlineResult> results;
+    protected int cacheTime;
 
     public TLBotResults() {
     }
@@ -93,8 +83,7 @@ public class TLBotResults extends TLObject {
         gallery = (flags & 1) != 0;
         queryId = readLong(stream);
         nextOffset = (flags & 2) != 0 ? readTLString(stream) : null;
-        switchPm = (flags & 4) != 0 ? readTLObject(stream, context, TLInlineBotSwitchPM.class,
-                                                   TLInlineBotSwitchPM.CONSTRUCTOR_ID) : null;
+        switchPm = (flags & 4) != 0 ? readTLObject(stream, context, TLInlineBotSwitchPM.class, TLInlineBotSwitchPM.CONSTRUCTOR_ID) : null;
         results = readTLVector(stream, context);
         cacheTime = readInt(stream);
     }

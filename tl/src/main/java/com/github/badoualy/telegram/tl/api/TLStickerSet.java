@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,32 +22,19 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLStickerSet extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xcd303b41;
-
-    protected int flags;
-
-    protected boolean installed;
-
-    protected boolean archived;
-
-    protected boolean official;
-
-    protected boolean masks;
-
-    protected long id;
-
-    protected long accessHash;
-
-    protected String title;
-
-    protected String shortName;
-
-    protected int count;
-
-    protected int hash;
-
     private final String _constructor = "stickerSet#cd303b41";
+    protected int flags;
+    protected boolean installed;
+    protected boolean archived;
+    protected boolean official;
+    protected boolean masks;
+    protected long id;
+    protected long accessHash;
+    protected String title;
+    protected String shortName;
+    protected int count;
+    protected int hash;
 
     public TLStickerSet() {
     }

@@ -6,7 +6,6 @@ import com.github.badoualy.telegram.tl.api.messages.TLPeerDialogs;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,12 +20,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesGetPeerDialogs extends TLMethod<TLPeerDialogs> {
-
     public static final int CONSTRUCTOR_ID = 0x2d9776b9;
-
-    protected TLVector<TLAbsInputPeer> peers;
-
     private final String _constructor = "messages.getPeerDialogs#2d9776b9";
+    protected TLVector<TLAbsInputPeer> peers;
 
     public TLRequestMessagesGetPeerDialogs() {
     }
@@ -43,9 +39,7 @@ public class TLRequestMessagesGetPeerDialogs extends TLMethod<TLPeerDialogs> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLPeerDialogs)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLPeerDialogs) response;
     }

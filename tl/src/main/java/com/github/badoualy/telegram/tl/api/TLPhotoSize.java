@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,18 +20,12 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPhotoSize extends TLAbsPhotoSize {
-
     public static final int CONSTRUCTOR_ID = 0x77bfb61b;
-
-    protected TLAbsFileLocation location;
-
-    protected int w;
-
-    protected int h;
-
-    protected int size;
-
     private final String _constructor = "photoSize#77bfb61b";
+    protected TLAbsFileLocation location;
+    protected int w;
+    protected int h;
+    protected int size;
 
     public TLPhotoSize() {
     }

@@ -1,8 +1,9 @@
 package com.github.badoualy.telegram.mtproto.transport
 
-import com.github.badoualy.telegram.tl.ByteBufferUtils.*
-import org.slf4j.LoggerFactory
-import org.slf4j.MarkerFactory
+import com.github.badoualy.telegram.tl.ByteBufferUtils.readByteAsInt
+import com.github.badoualy.telegram.tl.ByteBufferUtils.readInt24
+import com.github.badoualy.telegram.tl.ByteBufferUtils.writeByte
+import com.github.badoualy.telegram.tl.ByteBufferUtils.writeInt24
 import java.io.IOException
 import java.net.ConnectException
 import java.net.InetSocketAddress
@@ -13,10 +14,17 @@ import java.nio.channels.SelectionKey
 import java.nio.channels.Selector
 import java.nio.channels.SocketChannel
 import java.util.concurrent.TimeUnit
+import org.slf4j.LoggerFactory
+import org.slf4j.MarkerFactory
 
 internal class MTProtoTcpConnection
 @Throws(IOException::class)
-@JvmOverloads constructor(override val ip: String, override val port: Int, tag: String, abridgedProtocol: Boolean = true) : MTProtoConnection {
+@JvmOverloads constructor(
+    override val ip: String,
+    override val port: Int,
+    tag: String,
+    abridgedProtocol: Boolean = true
+) : MTProtoConnection {
 
     private val ATTEMPT_COUNT = 3
 
@@ -53,7 +61,7 @@ internal class MTProtoTcpConnection
                 logger.info(marker, "Connected to $ip:$port")
 
                 break
-            } catch(e: Exception) {
+            } catch (e: Exception) {
                 logger.error(marker, "Failed to connect", e)
                 try {
                     socketChannel.close()
@@ -144,7 +152,11 @@ internal class MTProtoTcpConnection
 
     override fun isOpen() = socketChannel.isOpen && socketChannel.isConnected
 
-    private fun readBytes(length: Int, recycledBuffer: ByteBuffer? = null, order: ByteOrder = ByteOrder.BIG_ENDIAN): ByteBuffer {
+    private fun readBytes(
+        length: Int,
+        recycledBuffer: ByteBuffer? = null,
+        order: ByteOrder = ByteOrder.BIG_ENDIAN
+    ): ByteBuffer {
         recycledBuffer?.clear()
         val buffer = recycledBuffer ?: ByteBuffer.allocate(length)
         buffer.order(order)

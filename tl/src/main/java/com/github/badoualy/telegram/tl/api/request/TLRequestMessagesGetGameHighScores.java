@@ -6,7 +6,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsInputUser;
 import com.github.badoualy.telegram.tl.api.messages.TLHighScores;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,16 +22,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesGetGameHighScores extends TLMethod<TLHighScores> {
-
     public static final int CONSTRUCTOR_ID = 0xe822649d;
-
-    protected TLAbsInputPeer peer;
-
-    protected int id;
-
-    protected TLAbsInputUser userId;
-
     private final String _constructor = "messages.getGameHighScores#e822649d";
+    protected TLAbsInputPeer peer;
+    protected int id;
+    protected TLAbsInputUser userId;
 
     public TLRequestMessagesGetGameHighScores() {
     }
@@ -51,9 +45,7 @@ public class TLRequestMessagesGetGameHighScores extends TLMethod<TLHighScores> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLHighScores)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLHighScores) response;
     }

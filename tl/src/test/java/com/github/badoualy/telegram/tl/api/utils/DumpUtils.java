@@ -5,17 +5,15 @@ import com.github.badoualy.telegram.tl.api.AbsTLApiTest;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.binary.Hex;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.HexDump;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Collection;
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.HexDump;
 
 public class DumpUtils {
 

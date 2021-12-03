@@ -1,6 +1,27 @@
 package com.github.badoualy.telegram.api.utils
 
-import com.github.badoualy.telegram.tl.api.*
+import com.github.badoualy.telegram.tl.api.TLAbsFileLocation
+import com.github.badoualy.telegram.tl.api.TLAbsInputFileLocation
+import com.github.badoualy.telegram.tl.api.TLAbsMessageMedia
+import com.github.badoualy.telegram.tl.api.TLAbsPhotoSize
+import com.github.badoualy.telegram.tl.api.TLDocument
+import com.github.badoualy.telegram.tl.api.TLFileLocation
+import com.github.badoualy.telegram.tl.api.TLFileLocationUnavailable
+import com.github.badoualy.telegram.tl.api.TLGeoPoint
+import com.github.badoualy.telegram.tl.api.TLInputDocumentFileLocation
+import com.github.badoualy.telegram.tl.api.TLInputFileLocation
+import com.github.badoualy.telegram.tl.api.TLMessageMediaContact
+import com.github.badoualy.telegram.tl.api.TLMessageMediaDocument
+import com.github.badoualy.telegram.tl.api.TLMessageMediaEmpty
+import com.github.badoualy.telegram.tl.api.TLMessageMediaGeo
+import com.github.badoualy.telegram.tl.api.TLMessageMediaPhoto
+import com.github.badoualy.telegram.tl.api.TLMessageMediaUnsupported
+import com.github.badoualy.telegram.tl.api.TLMessageMediaVenue
+import com.github.badoualy.telegram.tl.api.TLMessageMediaWebPage
+import com.github.badoualy.telegram.tl.api.TLPhoto
+import com.github.badoualy.telegram.tl.api.TLPhotoCachedSize
+import com.github.badoualy.telegram.tl.api.TLPhotoSize
+import com.github.badoualy.telegram.tl.api.TLWebPage
 import com.github.badoualy.telegram.tl.core.TLBytes
 
 fun TLAbsMessageMedia.getLocation(): TLGeoPoint? = when (this) {
@@ -40,7 +61,10 @@ fun TLAbsMessageMedia.getAbsMediaThumbnailInput() = when (this) {
 fun TLMessageMediaDocument.getMediaInput() = when (document) {
     is TLDocument -> {
         val document = document as TLDocument
-        val inputFileLocation = InputFileLocation(TLInputDocumentFileLocation(document.id, document.accessHash, document.version), document.dcId)
+        val inputFileLocation = InputFileLocation(
+            TLInputDocumentFileLocation(document.id, document.accessHash, document.version),
+            document.dcId
+        )
         MediaInput(inputFileLocation, document.size, document.mimeType)
     }
     else -> null
@@ -97,8 +121,8 @@ fun TLAbsPhotoSize?.getMediaInput() = when (this) {
     else -> null
 }
 
-fun Collection<TLAbsPhotoSize>?.getMaxSize(): TLAbsPhotoSize? {
-    if (this == null || isEmpty())
+fun Collection<TLAbsPhotoSize>.getMaxSize(): TLAbsPhotoSize? {
+    if (isEmpty())
         return null
 
     val maxSize = filterIsInstance<TLPhotoSize>().sortedByDescending { it.w * it.h }.firstOrNull()
@@ -109,8 +133,8 @@ fun Collection<TLAbsPhotoSize>?.getMaxSize(): TLAbsPhotoSize? {
     return filterIsInstance<TLPhotoCachedSize>().firstOrNull()
 }
 
-fun Collection<TLAbsPhotoSize>?.getMinSize(): TLAbsPhotoSize? {
-    if (this == null || isEmpty())
+fun Collection<TLAbsPhotoSize>.getMinSize(): TLAbsPhotoSize? {
+    if (isEmpty())
         return null
 
     // Look for cached size
@@ -127,5 +151,11 @@ fun TLAbsFileLocation.toInputFileLocation() = when (this) {
     else -> null
 }
 
-data class MediaInput(val inputFileLocation: InputFileLocation, val size: Int, val mimeType: String, val cached: TLBytes? = null)
+data class MediaInput(
+    val inputFileLocation: InputFileLocation,
+    val size: Int,
+    val mimeType: String,
+    val cached: TLBytes? = null
+)
+
 data class InputFileLocation(val inputFileLocation: TLAbsInputFileLocation, val dcId: Int)

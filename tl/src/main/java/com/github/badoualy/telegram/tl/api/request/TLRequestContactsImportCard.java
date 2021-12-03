@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsUser;
 import com.github.badoualy.telegram.tl.core.TLIntVector;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,12 +19,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestContactsImportCard extends TLMethod<TLAbsUser> {
-
     public static final int CONSTRUCTOR_ID = 0x4fe196fe;
-
-    protected TLIntVector exportCard;
-
     private final String _constructor = "contacts.importCard#4fe196fe";
+    protected TLIntVector exportCard;
 
     public TLRequestContactsImportCard() {
     }
@@ -42,9 +38,7 @@ public class TLRequestContactsImportCard extends TLMethod<TLAbsUser> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAbsUser)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAbsUser) response;
     }

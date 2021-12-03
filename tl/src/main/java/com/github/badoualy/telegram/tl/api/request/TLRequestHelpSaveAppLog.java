@@ -6,7 +6,6 @@ import com.github.badoualy.telegram.tl.core.TLBool;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,12 +20,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestHelpSaveAppLog extends TLMethod<TLBool> {
-
     public static final int CONSTRUCTOR_ID = 0x6f02f748;
-
-    protected TLVector<TLInputAppEvent> events;
-
     private final String _constructor = "help.saveAppLog#6f02f748";
+    protected TLVector<TLInputAppEvent> events;
 
     public TLRequestHelpSaveAppLog() {
     }
@@ -43,9 +39,7 @@ public class TLRequestHelpSaveAppLog extends TLMethod<TLBool> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLBool)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLBool) response;
     }

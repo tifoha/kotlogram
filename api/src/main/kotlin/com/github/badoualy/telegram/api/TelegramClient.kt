@@ -2,7 +2,21 @@ package com.github.badoualy.telegram.api
 
 import com.github.badoualy.telegram.api.utils.InputFileLocation
 import com.github.badoualy.telegram.mtproto.MTProtoHandler
-import com.github.badoualy.telegram.tl.api.*
+import com.github.badoualy.telegram.tl.api.TLAbsChat
+import com.github.badoualy.telegram.tl.api.TLAbsInputPeer
+import com.github.badoualy.telegram.tl.api.TLAbsUpdates
+import com.github.badoualy.telegram.tl.api.TLAbsUser
+import com.github.badoualy.telegram.tl.api.TLChannel
+import com.github.badoualy.telegram.tl.api.TLChat
+import com.github.badoualy.telegram.tl.api.TLChatEmpty
+import com.github.badoualy.telegram.tl.api.TLChatForbidden
+import com.github.badoualy.telegram.tl.api.TLChatPhoto
+import com.github.badoualy.telegram.tl.api.TLFileLocation
+import com.github.badoualy.telegram.tl.api.TLInputFileLocation
+import com.github.badoualy.telegram.tl.api.TLUser
+import com.github.badoualy.telegram.tl.api.TLUserEmpty
+import com.github.badoualy.telegram.tl.api.TLUserProfilePhoto
+import com.github.badoualy.telegram.tl.api.TelegramApi
 import com.github.badoualy.telegram.tl.api.auth.TLAuthorization
 import com.github.badoualy.telegram.tl.api.auth.TLSentCode
 import com.github.badoualy.telegram.tl.api.request.TLRequestUploadGetFile
@@ -11,9 +25,9 @@ import com.github.badoualy.telegram.tl.core.TLBytes
 import com.github.badoualy.telegram.tl.core.TLMethod
 import com.github.badoualy.telegram.tl.core.TLObject
 import com.github.badoualy.telegram.tl.exception.RpcErrorException
-import rx.Observable
 import java.io.IOException
 import java.io.OutputStream
+import rx.Observable
 
 interface TelegramClient : TelegramApi {
 
@@ -46,7 +60,12 @@ interface TelegramClient : TelegramApi {
      * @param timeout request timeout (applied on the observable)
      * @return an observable that will receive one unique item being the response
      */
-    fun <T : TLObject> queueMethod(method: TLMethod<T>, type: Int = MTProtoHandler.QUEUE_TYPE_DISCARD, validityTimeout: Long, timeout: Long): Observable<T>?
+    fun <T : TLObject> queueMethod(
+        method: TLMethod<T>,
+        type: Int = MTProtoHandler.QUEUE_TYPE_DISCARD,
+        validityTimeout: Long,
+        timeout: Long
+    ): Observable<T>?
 
     fun getDownloaderClient(): TelegramClient
 
@@ -55,11 +74,13 @@ interface TelegramClient : TelegramApi {
     ////////////////////////////////////////////////////////
     @Throws(RpcErrorException::class, IOException::class)
     fun <T : TLObject> executeRpcQuery(method: TLMethod<T>) = executeRpcQueries(
-            listOf(method)).first()
+        listOf(method)
+    ).first()
 
     @Throws(RpcErrorException::class, IOException::class)
     fun <T : TLObject> executeRpcQuery(method: TLMethod<T>, dcId: Int) = executeRpcQueries(
-            listOf(method), dcId).first()
+        listOf(method), dcId
+    ).first()
 
     @Throws(RpcErrorException::class, IOException::class)
     fun <T : TLObject> executeRpcQueries(methods: List<TLMethod<T>>): List<T>
@@ -71,9 +92,17 @@ interface TelegramClient : TelegramApi {
     @Throws(RpcErrorException::class, IOException::class)
     fun authSendCode(allowFlashcall: Boolean, phoneNumber: String, currentNumber: Boolean): TLSentCode
 
-    @Deprecated("Use authSendCode for more convenience",
-                ReplaceWith("authSendCode(allowFlashcall, phoneNumber, currentNumber)"))
-    override fun authSendCode(allowFlashcall: Boolean, phoneNumber: String?, currentNumber: Boolean, apiId: Int, apiHash: String?): TLSentCode
+    @Deprecated(
+        "Use authSendCode for more convenience",
+        ReplaceWith("authSendCode(allowFlashcall, phoneNumber, currentNumber)")
+    )
+    override fun authSendCode(
+        allowFlashcall: Boolean,
+        phoneNumber: String?,
+        currentNumber: Boolean,
+        apiId: Int,
+        apiHash: String?
+    ): TLSentCode
 
     /** Convenience method wrapping the argument with salt */
     @Throws(RpcErrorException::class, IOException::class)
@@ -91,7 +120,14 @@ interface TelegramClient : TelegramApi {
     fun <T : TLObject> initConnection(query: TLMethod<T>): T
 
     @Deprecated("Use initConnection for more convenience", ReplaceWith("initConnection(query)"))
-    override fun <T : TLObject?> initConnection(apiId: Int, deviceModel: String, systemVersion: String, appVersion: String, langCode: String, query: TLMethod<T>): T
+    override fun <T : TLObject?> initConnection(
+        apiId: Int,
+        deviceModel: String,
+        systemVersion: String,
+        appVersion: String,
+        langCode: String,
+        query: TLMethod<T>
+    ): T
 
     /** Convenience method wrapping the argument for a plain text message */
     fun messagesSendMessage(peer: TLAbsInputPeer, message: String, randomId: Long): TLAbsUpdates?
@@ -110,12 +146,14 @@ interface TelegramClient : TelegramApi {
             else -> null
         } ?: return null) as? TLFileLocation ?: return null
 
-        val inputLocation = TLInputFileLocation(photoLocation.volumeId, photoLocation.localId,
-                                                photoLocation.secret)
+        val inputLocation = TLInputFileLocation(
+            photoLocation.volumeId, photoLocation.localId,
+            photoLocation.secret
+        )
         val request = TLRequestUploadGetFile(inputLocation, 0, 0)
         return executeRpcQuery(request, photoLocation.dcId) as? TLFile
-                // TODO: handle CDN
-                ?: throw IOException("Unhandled CDN redirection")
+        // TODO: handle CDN
+            ?: throw IOException("Unhandled CDN redirection")
     }
 
     /** Convenience method to downloadSync a chat photo */
@@ -133,12 +171,14 @@ interface TelegramClient : TelegramApi {
             else -> null
         } ?: return null) as? TLFileLocation ?: return null
 
-        val inputLocation = TLInputFileLocation(photoLocation.volumeId, photoLocation.localId,
-                                                photoLocation.secret)
+        val inputLocation = TLInputFileLocation(
+            photoLocation.volumeId, photoLocation.localId,
+            photoLocation.secret
+        )
         val request = TLRequestUploadGetFile(inputLocation, 0, 0)
-        return executeRpcQuery(request, photoLocation.dcId)as? TLFile
-                // TODO: handle CDN
-                ?: throw IOException("Unhandled CDN redirection")
+        return executeRpcQuery(request, photoLocation.dcId) as? TLFile
+        // TODO: handle CDN
+            ?: throw IOException("Unhandled CDN redirection")
     }
 
     /** Convenience method to downloadSync a channel photo */
@@ -148,7 +188,7 @@ interface TelegramClient : TelegramApi {
     /** Convenience method to download a file synchronously */
     @Throws(RpcErrorException::class, IOException::class)
     fun downloadSync(inputLocation: InputFileLocation, size: Int, outputStream: OutputStream) =
-            downloadSync(inputLocation, size, 128 * 1024, outputStream)
+        downloadSync(inputLocation, size, 128 * 1024, outputStream)
 
     /** Convenience method to download a file synchronously */
     @Throws(RpcErrorException::class, IOException::class)

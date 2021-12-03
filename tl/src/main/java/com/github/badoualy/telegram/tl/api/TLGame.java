@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,26 +24,16 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLGame extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xbdf9653b;
-
-    protected int flags;
-
-    protected long id;
-
-    protected long accessHash;
-
-    protected String shortName;
-
-    protected String title;
-
-    protected String description;
-
-    protected TLAbsPhoto photo;
-
-    protected TLAbsDocument document;
-
     private final String _constructor = "game#bdf9653b";
+    protected int flags;
+    protected long id;
+    protected long accessHash;
+    protected String shortName;
+    protected String title;
+    protected String description;
+    protected TLAbsPhoto photo;
+    protected TLAbsDocument document;
 
     public TLGame() {
     }

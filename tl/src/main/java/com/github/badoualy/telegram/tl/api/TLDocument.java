@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,26 +26,16 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLDocument extends TLAbsDocument {
-
     public static final int CONSTRUCTOR_ID = 0x87232bc7;
-
-    protected long accessHash;
-
-    protected int date;
-
-    protected String mimeType;
-
-    protected int size;
-
-    protected TLAbsPhotoSize thumb;
-
-    protected int dcId;
-
-    protected int version;
-
-    protected TLVector<TLAbsDocumentAttribute> attributes;
-
     private final String _constructor = "document#87232bc7";
+    protected long accessHash;
+    protected int date;
+    protected String mimeType;
+    protected int size;
+    protected TLAbsPhotoSize thumb;
+    protected int dcId;
+    protected int version;
+    protected TLVector<TLAbsDocumentAttribute> attributes;
 
     public TLDocument() {
     }

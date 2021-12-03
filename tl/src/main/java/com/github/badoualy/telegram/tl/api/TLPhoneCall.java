@@ -3,7 +3,6 @@ package com.github.badoualy.telegram.tl.api;
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLBytes;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,30 +27,18 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLBytesSerial
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPhoneCall extends TLAbsPhoneCall {
-
     public static final int CONSTRUCTOR_ID = 0xffe6ab67;
-
-    protected long accessHash;
-
-    protected int date;
-
-    protected int adminId;
-
-    protected int participantId;
-
-    protected TLBytes gAOrB;
-
-    protected long keyFingerprint;
-
-    protected TLPhoneCallProtocol protocol;
-
-    protected TLPhoneConnection connection;
-
-    protected TLVector<TLPhoneConnection> alternativeConnections;
-
-    protected int startDate;
-
     private final String _constructor = "phoneCall#ffe6ab67";
+    protected long accessHash;
+    protected int date;
+    protected int adminId;
+    protected int participantId;
+    protected TLBytes gAOrB;
+    protected long keyFingerprint;
+    protected TLPhoneCallProtocol protocol;
+    protected TLPhoneConnection connection;
+    protected TLVector<TLPhoneConnection> alternativeConnections;
+    protected int startDate;
 
     public TLPhoneCall() {
     }

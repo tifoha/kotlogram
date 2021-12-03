@@ -1,13 +1,23 @@
 package com.github.badoualy.telegram.mtproto.tl
 
-import com.github.badoualy.telegram.tl.StreamUtils.*
+import com.github.badoualy.telegram.tl.StreamUtils.readBytes
+import com.github.badoualy.telegram.tl.StreamUtils.readInt
+import com.github.badoualy.telegram.tl.StreamUtils.readLong
+import com.github.badoualy.telegram.tl.StreamUtils.writeByteArray
+import com.github.badoualy.telegram.tl.StreamUtils.writeInt
+import com.github.badoualy.telegram.tl.StreamUtils.writeLong
 import com.github.badoualy.telegram.tl.TLContext
 import com.github.badoualy.telegram.tl.core.TLObject
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-class MTMessage @JvmOverloads constructor(var messageId: Long = 0, var seqNo: Int = 0, var payload: ByteArray = ByteArray(0), var  payloadLength: Int = payload.size) : TLObject() {
+class MTMessage @JvmOverloads constructor(
+    var messageId: Long = 0,
+    var seqNo: Int = 0,
+    var payload: ByteArray = ByteArray(0),
+    var payloadLength: Int = payload.size
+) : TLObject() {
 
     override fun getConstructorId(): Int {
         return 0

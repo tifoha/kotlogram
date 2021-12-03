@@ -40,9 +40,11 @@ object TempAuthKeyBinding {
 
         val nonce = BigInteger(RandomUtils.randomByteArray(8)).toLong()
 
-        val bindingMessage = BindAuthKeyInner(nonce,
-                                              tempAuthKey.keyIdAsLong, authKey.keyIdAsLong,
-                                              mtProtoHandler.session.id, tempAuthKey.expiresAt)
+        val bindingMessage = BindAuthKeyInner(
+            nonce,
+            tempAuthKey.keyIdAsLong, authKey.keyIdAsLong,
+            mtProtoHandler.session.id, tempAuthKey.expiresAt
+        )
 
         val randomPart1 = RandomUtils.randomByteArray(8) // replace session_id
         val randomPart2 = RandomUtils.randomLong() // replace salt
@@ -53,9 +55,12 @@ object TempAuthKeyBinding {
         val encryptedMessage = MTProtoMessageEncryption.encrypt(authKey, randomPart1, randomPart2, mtBindingMessage)
 
         // Build request
-        val request = TLRequestAuthBindTempAuthKey(authKey.keyIdAsLong, nonce,
-                                                   tempAuthKey.expiresAt,
-                                                   TLBytes(encryptedMessage.data))
+        val request = TLRequestAuthBindTempAuthKey(
+            authKey.keyIdAsLong, nonce,
+            tempAuthKey.expiresAt,
+            TLBytes(encryptedMessage.data)
+        )
+
         @Suppress("UNUSED_VARIABLE")
         val message = MTMessage(msgId, 0, request.serialize())
 

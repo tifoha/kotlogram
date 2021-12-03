@@ -8,7 +8,6 @@ import com.github.badoualy.telegram.tl.api.TLDialog;
 import com.github.badoualy.telegram.tl.api.updates.TLState;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,20 +23,13 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPeerDialogs extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x3371c354;
-
-    protected TLVector<TLDialog> dialogs;
-
-    protected TLVector<TLAbsMessage> messages;
-
-    protected TLVector<TLAbsChat> chats;
-
-    protected TLVector<TLAbsUser> users;
-
-    protected TLState state;
-
     private final String _constructor = "messages.peerDialogs#3371c354";
+    protected TLVector<TLDialog> dialogs;
+    protected TLVector<TLAbsMessage> messages;
+    protected TLVector<TLAbsChat> chats;
+    protected TLVector<TLAbsUser> users;
+    protected TLState state;
 
     public TLPeerDialogs() {
     }

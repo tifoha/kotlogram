@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,22 +20,14 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUpdateBotInlineSend extends TLAbsUpdate {
-
     public static final int CONSTRUCTOR_ID = 0xe48f964;
-
-    protected int flags;
-
-    protected int userId;
-
-    protected String query;
-
-    protected TLAbsGeoPoint geo;
-
-    protected String id;
-
-    protected TLInputBotInlineMessageID msgId;
-
     private final String _constructor = "updateBotInlineSend#e48f964";
+    protected int flags;
+    protected int userId;
+    protected String query;
+    protected TLAbsGeoPoint geo;
+    protected String id;
+    protected TLInputBotInlineMessageID msgId;
 
     public TLUpdateBotInlineSend() {
     }
@@ -81,8 +72,7 @@ public class TLUpdateBotInlineSend extends TLAbsUpdate {
         query = readTLString(stream);
         geo = (flags & 1) != 0 ? readTLObject(stream, context, TLAbsGeoPoint.class, -1) : null;
         id = readTLString(stream);
-        msgId = (flags & 2) != 0 ? readTLObject(stream, context, TLInputBotInlineMessageID.class,
-                                                TLInputBotInlineMessageID.CONSTRUCTOR_ID) : null;
+        msgId = (flags & 2) != 0 ? readTLObject(stream, context, TLInputBotInlineMessageID.class, TLInputBotInlineMessageID.CONSTRUCTOR_ID) : null;
     }
 
     @Override

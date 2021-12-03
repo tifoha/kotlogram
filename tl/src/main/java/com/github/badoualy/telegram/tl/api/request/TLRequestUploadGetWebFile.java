@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLInputWebFileLocation;
 import com.github.badoualy.telegram.tl.api.upload.TLWebFile;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -22,16 +21,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestUploadGetWebFile extends TLMethod<TLWebFile> {
-
     public static final int CONSTRUCTOR_ID = 0x24e6818d;
-
-    protected TLInputWebFileLocation location;
-
-    protected int offset;
-
-    protected int limit;
-
     private final String _constructor = "upload.getWebFile#24e6818d";
+    protected TLInputWebFileLocation location;
+    protected int offset;
+    protected int limit;
 
     public TLRequestUploadGetWebFile() {
     }
@@ -50,9 +44,7 @@ public class TLRequestUploadGetWebFile extends TLMethod<TLWebFile> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLWebFile)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLWebFile) response;
     }

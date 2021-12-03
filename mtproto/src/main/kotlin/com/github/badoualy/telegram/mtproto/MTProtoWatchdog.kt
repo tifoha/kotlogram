@@ -2,14 +2,14 @@ package com.github.badoualy.telegram.mtproto
 
 import com.github.badoualy.telegram.mtproto.transport.MTProtoConnection
 import com.github.badoualy.telegram.mtproto.util.NamedThreadFactory
-import org.slf4j.LoggerFactory
-import rx.Observable
-import rx.Subscriber
 import java.io.IOException
 import java.nio.channels.SelectionKey
 import java.nio.channels.Selector
 import java.util.*
 import java.util.concurrent.Executors
+import org.slf4j.LoggerFactory
+import rx.Observable
+import rx.Subscriber
 
 /**
  * Permanently listen for messages on given MTProtoConnection and wrap everything in an Observable, each message will be send
@@ -39,8 +39,8 @@ internal object MTProtoWatchdog : Runnable {
             if (dirty) {
                 synchronized(this) {
                     connectionList
-                            .filterNot { connectionMap.containsValue(it) }
-                            .forEach { connectionMap.put(it.register(selector), it) }
+                        .filterNot { connectionMap.containsValue(it) }
+                        .forEach { connectionMap.put(it.register(selector), it) }
                     dirty = false
                 }
             }

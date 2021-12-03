@@ -6,7 +6,6 @@ import com.github.badoualy.telegram.tl.api.TLInputPeerNotifySettings;
 import com.github.badoualy.telegram.tl.core.TLBool;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,14 +19,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestAccountUpdateNotifySettings extends TLMethod<TLBool> {
-
     public static final int CONSTRUCTOR_ID = 0x84be5b93;
-
-    protected TLAbsInputNotifyPeer peer;
-
-    protected TLInputPeerNotifySettings settings;
-
     private final String _constructor = "account.updateNotifySettings#84be5b93";
+    protected TLAbsInputNotifyPeer peer;
+    protected TLInputPeerNotifySettings settings;
 
     public TLRequestAccountUpdateNotifySettings() {
     }
@@ -45,9 +40,7 @@ public class TLRequestAccountUpdateNotifySettings extends TLMethod<TLBool> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLBool)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLBool) response;
     }
@@ -62,8 +55,7 @@ public class TLRequestAccountUpdateNotifySettings extends TLMethod<TLBool> {
     @SuppressWarnings({"unchecked", "SimplifiableConditionalExpression"})
     public void deserializeBody(InputStream stream, TLContext context) throws IOException {
         peer = readTLObject(stream, context, TLAbsInputNotifyPeer.class, -1);
-        settings = readTLObject(stream, context, TLInputPeerNotifySettings.class,
-                                TLInputPeerNotifySettings.CONSTRUCTOR_ID);
+        settings = readTLObject(stream, context, TLInputPeerNotifySettings.class, TLInputPeerNotifySettings.CONSTRUCTOR_ID);
     }
 
     @Override

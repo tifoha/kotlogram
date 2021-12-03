@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsUser;
 import com.github.badoualy.telegram.tl.api.TLHighScore;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,14 +18,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLHighScores extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x9a3bfd99;
-
-    protected TLVector<TLHighScore> scores;
-
-    protected TLVector<TLAbsUser> users;
-
     private final String _constructor = "messages.highScores#9a3bfd99";
+    protected TLVector<TLHighScore> scores;
+    protected TLVector<TLAbsUser> users;
 
     public TLHighScores() {
     }

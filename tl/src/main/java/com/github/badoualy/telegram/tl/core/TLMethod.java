@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.core;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;

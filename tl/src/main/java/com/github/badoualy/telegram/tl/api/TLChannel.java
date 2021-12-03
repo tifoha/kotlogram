@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,50 +23,28 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLChannel extends TLAbsChat {
-
     public static final int CONSTRUCTOR_ID = 0xa14dca52;
-
-    protected int flags;
-
-    protected boolean creator;
-
-    protected boolean kicked;
-
-    protected boolean left;
-
-    protected boolean editor;
-
-    protected boolean moderator;
-
-    protected boolean broadcast;
-
-    protected boolean verified;
-
-    protected boolean megagroup;
-
-    protected boolean restricted;
-
-    protected boolean democracy;
-
-    protected boolean signatures;
-
-    protected boolean min;
-
-    protected Long accessHash;
-
-    protected String title;
-
-    protected String username;
-
-    protected TLAbsChatPhoto photo;
-
-    protected int date;
-
-    protected int version;
-
-    protected String restrictionReason;
-
     private final String _constructor = "channel#a14dca52";
+    protected int flags;
+    protected boolean creator;
+    protected boolean kicked;
+    protected boolean left;
+    protected boolean editor;
+    protected boolean moderator;
+    protected boolean broadcast;
+    protected boolean verified;
+    protected boolean megagroup;
+    protected boolean restricted;
+    protected boolean democracy;
+    protected boolean signatures;
+    protected boolean min;
+    protected Long accessHash;
+    protected String title;
+    protected String username;
+    protected TLAbsChatPhoto photo;
+    protected int date;
+    protected int version;
+    protected String restrictionReason;
 
     public TLChannel() {
     }

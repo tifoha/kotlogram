@@ -3,7 +3,6 @@ package com.github.badoualy.telegram.tl.api;
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLBytes;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,20 +26,13 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPhoneConnection extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x9d4c17c0;
-
-    protected long id;
-
-    protected String ip;
-
-    protected String ipv6;
-
-    protected int port;
-
-    protected TLBytes peerTag;
-
     private final String _constructor = "phoneConnection#9d4c17c0";
+    protected long id;
+    protected String ip;
+    protected String ipv6;
+    protected int port;
+    protected TLBytes peerTag;
 
     public TLPhoneConnection() {
     }

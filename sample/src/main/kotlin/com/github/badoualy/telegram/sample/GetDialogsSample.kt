@@ -14,7 +14,8 @@ import java.io.IOException
 
 object GetDialogsSample {
 
-    @JvmStatic fun main(args: Array<String>) {
+    @JvmStatic
+    fun main(args: Array<String>) {
         // This is a synchronous client, that will block until the response arrive (or until timeout)
         val client = Kotlogram.getDefaultClient(Config.application, FileApiStorage())
 
@@ -29,8 +30,8 @@ object GetDialogsSample {
             // Create a map of id to name map
             val nameMap = HashMap<Int, String>()
             tlAbsDialogs.users.filterIsInstance<TLUser>()
-                    .map { Pair(it.id, "${it.firstName} ${it.lastName}") }
-                    .toMap(nameMap)
+                .map { Pair(it.id, "${it.firstName} ${it.lastName}") }
+                .toMap(nameMap)
             tlAbsDialogs.chats.map { Pair(it.id, it.title ?: "") }.toMap(nameMap)
 
             val messageMap = tlAbsDialogs.messages.map { Pair(it.id, it) }.toMap()
@@ -38,9 +39,9 @@ object GetDialogsSample {
             tlAbsDialogs.dialogs.forEach { dialog ->
                 val topMessage = messageMap[dialog.topMessage]!!
                 val topMessageContent =
-                        if (topMessage is TLMessage) topMessage.message
-                        else if (topMessage is TLMessageService) "Service: ${topMessage.action}"
-                        else "Empty message (TLMessageEmpty)"
+                    if (topMessage is TLMessage) topMessage.message
+                    else if (topMessage is TLMessageService) "Service: ${topMessage.action}"
+                    else "Empty message (TLMessageEmpty)"
 
                 println("${nameMap[dialog.peer.id]}: $topMessageContent")
             }

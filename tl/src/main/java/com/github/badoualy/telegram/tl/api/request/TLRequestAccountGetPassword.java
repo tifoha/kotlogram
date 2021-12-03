@@ -4,7 +4,6 @@ import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.account.TLAbsPassword;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -15,7 +14,6 @@ import static com.github.badoualy.telegram.tl.StreamUtils.readTLObject;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestAccountGetPassword extends TLMethod<TLAbsPassword> {
-
     public static final int CONSTRUCTOR_ID = 0x548a30f5;
 
     private final String _constructor = "account.getPassword#548a30f5";
@@ -31,9 +29,7 @@ public class TLRequestAccountGetPassword extends TLMethod<TLAbsPassword> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAbsPassword)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAbsPassword) response;
     }

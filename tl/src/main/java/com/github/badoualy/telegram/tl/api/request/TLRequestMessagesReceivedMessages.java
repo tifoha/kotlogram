@@ -4,7 +4,6 @@ import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.TLReceivedNotifyMessage;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,12 +19,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesReceivedMessages extends TLMethod<TLVector<TLReceivedNotifyMessage>> {
-
     public static final int CONSTRUCTOR_ID = 0x5a954c0;
-
-    protected int maxId;
-
     private final String _constructor = "messages.receivedMessages#5a954c0";
+    protected int maxId;
 
     public TLRequestMessagesReceivedMessages() {
     }

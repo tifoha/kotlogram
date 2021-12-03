@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsInputUser;
 import com.github.badoualy.telegram.tl.api.messages.TLAbsChats;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -22,16 +21,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesGetCommonChats extends TLMethod<TLAbsChats> {
-
     public static final int CONSTRUCTOR_ID = 0xd0a48c4;
-
-    protected TLAbsInputUser userId;
-
-    protected int maxId;
-
-    protected int limit;
-
     private final String _constructor = "messages.getCommonChats#d0a48c4";
+    protected TLAbsInputUser userId;
+    protected int maxId;
+    protected int limit;
 
     public TLRequestMessagesGetCommonChats() {
     }
@@ -50,9 +44,7 @@ public class TLRequestMessagesGetCommonChats extends TLMethod<TLAbsChats> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAbsChats)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAbsChats) response;
     }

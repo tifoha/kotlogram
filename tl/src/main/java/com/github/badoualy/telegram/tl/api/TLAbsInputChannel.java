@@ -13,16 +13,7 @@ import com.github.badoualy.telegram.tl.core.TLObject;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public abstract class TLAbsInputChannel extends TLObject {
-
     public TLAbsInputChannel() {
-    }
-
-    public abstract boolean isEmpty();
-
-    public abstract boolean isNotEmpty();
-
-    public TLInputChannel getAsInputChannel() {
-        return null;
     }
 
     public static TLInputChannelEmpty newEmpty() {
@@ -31,5 +22,13 @@ public abstract class TLAbsInputChannel extends TLObject {
 
     public static TLInputChannel newNotEmpty() {
         return new TLInputChannel();
+    }
+
+    public abstract boolean isEmpty();
+
+    public abstract boolean isNotEmpty();
+
+    public TLInputChannel getAsInputChannel() {
+        return null;
     }
 }

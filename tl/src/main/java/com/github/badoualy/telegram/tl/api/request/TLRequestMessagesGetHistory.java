@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsInputPeer;
 import com.github.badoualy.telegram.tl.api.messages.TLAbsMessages;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -22,24 +21,15 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesGetHistory extends TLMethod<TLAbsMessages> {
-
     public static final int CONSTRUCTOR_ID = 0xafa92846;
-
-    protected TLAbsInputPeer peer;
-
-    protected int offsetId;
-
-    protected int offsetDate;
-
-    protected int addOffset;
-
-    protected int limit;
-
-    protected int maxId;
-
-    protected int minId;
-
     private final String _constructor = "messages.getHistory#afa92846";
+    protected TLAbsInputPeer peer;
+    protected int offsetId;
+    protected int offsetDate;
+    protected int addOffset;
+    protected int limit;
+    protected int maxId;
+    protected int minId;
 
     public TLRequestMessagesGetHistory() {
     }
@@ -62,9 +52,7 @@ public class TLRequestMessagesGetHistory extends TLMethod<TLAbsMessages> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAbsMessages)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAbsMessages) response;
     }

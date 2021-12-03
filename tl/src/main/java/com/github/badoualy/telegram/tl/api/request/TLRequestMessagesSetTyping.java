@@ -6,7 +6,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsSendMessageAction;
 import com.github.badoualy.telegram.tl.core.TLBool;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,14 +19,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesSetTyping extends TLMethod<TLBool> {
-
     public static final int CONSTRUCTOR_ID = 0xa3825e50;
-
-    protected TLAbsInputPeer peer;
-
-    protected TLAbsSendMessageAction action;
-
     private final String _constructor = "messages.setTyping#a3825e50";
+    protected TLAbsInputPeer peer;
+    protected TLAbsSendMessageAction action;
 
     public TLRequestMessagesSetTyping() {
     }
@@ -45,9 +40,7 @@ public class TLRequestMessagesSetTyping extends TLMethod<TLBool> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLBool)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLBool) response;
     }

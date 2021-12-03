@@ -6,7 +6,6 @@ import com.github.badoualy.telegram.tl.core.TLBool;
 import com.github.badoualy.telegram.tl.core.TLBytes;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,14 +22,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLBytesSerial
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestAccountUpdatePasswordSettings extends TLMethod<TLBool> {
-
     public static final int CONSTRUCTOR_ID = 0xfa7c4b86;
-
-    protected TLBytes currentPasswordHash;
-
-    protected TLPasswordInputSettings newSettings;
-
     private final String _constructor = "account.updatePasswordSettings#fa7c4b86";
+    protected TLBytes currentPasswordHash;
+    protected TLPasswordInputSettings newSettings;
 
     public TLRequestAccountUpdatePasswordSettings() {
     }
@@ -48,9 +43,7 @@ public class TLRequestAccountUpdatePasswordSettings extends TLMethod<TLBool> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLBool)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLBool) response;
     }
@@ -65,8 +58,7 @@ public class TLRequestAccountUpdatePasswordSettings extends TLMethod<TLBool> {
     @SuppressWarnings({"unchecked", "SimplifiableConditionalExpression"})
     public void deserializeBody(InputStream stream, TLContext context) throws IOException {
         currentPasswordHash = readTLBytes(stream, context);
-        newSettings = readTLObject(stream, context, TLPasswordInputSettings.class,
-                                   TLPasswordInputSettings.CONSTRUCTOR_ID);
+        newSettings = readTLObject(stream, context, TLPasswordInputSettings.class, TLPasswordInputSettings.CONSTRUCTOR_ID);
     }
 
     @Override

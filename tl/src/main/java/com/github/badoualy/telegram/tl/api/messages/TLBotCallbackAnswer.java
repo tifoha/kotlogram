@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api.messages;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,22 +19,14 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLBotCallbackAnswer extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x36585ea4;
-
-    protected int flags;
-
-    protected boolean alert;
-
-    protected boolean hasUrl;
-
-    protected String message;
-
-    protected String url;
-
-    protected int cacheTime;
-
     private final String _constructor = "messages.botCallbackAnswer#36585ea4";
+    protected int flags;
+    protected boolean alert;
+    protected boolean hasUrl;
+    protected String message;
+    protected String url;
+    protected int cacheTime;
 
     public TLBotCallbackAnswer() {
     }

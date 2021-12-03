@@ -4,7 +4,6 @@ import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.contacts.TLAbsTopPeers;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,28 +19,17 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestContactsGetTopPeers extends TLMethod<TLAbsTopPeers> {
-
     public static final int CONSTRUCTOR_ID = 0xd4982db5;
-
-    protected int flags;
-
-    protected boolean correspondents;
-
-    protected boolean botsPm;
-
-    protected boolean botsInline;
-
-    protected boolean groups;
-
-    protected boolean channels;
-
-    protected int offset;
-
-    protected int limit;
-
-    protected int hash;
-
     private final String _constructor = "contacts.getTopPeers#d4982db5";
+    protected int flags;
+    protected boolean correspondents;
+    protected boolean botsPm;
+    protected boolean botsInline;
+    protected boolean groups;
+    protected boolean channels;
+    protected int offset;
+    protected int limit;
+    protected int hash;
 
     public TLRequestContactsGetTopPeers() {
     }
@@ -65,9 +53,7 @@ public class TLRequestContactsGetTopPeers extends TLMethod<TLAbsTopPeers> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAbsTopPeers)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAbsTopPeers) response;
     }

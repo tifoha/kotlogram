@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,12 +14,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUpdatePhoneCall extends TLAbsUpdate {
-
     public static final int CONSTRUCTOR_ID = 0xab0f6b1e;
-
-    protected TLAbsPhoneCall phoneCall;
-
     private final String _constructor = "updatePhoneCall#ab0f6b1e";
+    protected TLAbsPhoneCall phoneCall;
 
     public TLUpdatePhoneCall() {
     }

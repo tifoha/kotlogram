@@ -68,7 +68,6 @@ import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLStringVector;
 import com.github.badoualy.telegram.tl.core.TLVector;
 import com.github.badoualy.telegram.tl.exception.RpcErrorException;
-
 import java.io.IOException;
 
 /**
@@ -77,7 +76,6 @@ import java.io.IOException;
  */
 @SuppressWarnings({"unused", "unchecked", "RedundantCast"})
 public interface TelegramApi {
-
     TLAbsUser accountChangePhone(String phoneNumber, String phoneCodeHash, String phoneCode) throws RpcErrorException, IOException;
 
     TLBool accountCheckUsername(String username) throws RpcErrorException, IOException;

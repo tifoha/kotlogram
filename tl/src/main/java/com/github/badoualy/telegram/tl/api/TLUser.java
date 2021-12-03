@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,56 +23,31 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUser extends TLAbsUser {
-
     public static final int CONSTRUCTOR_ID = 0x2e13f4c3;
-
-    protected int flags;
-
-    protected boolean self;
-
-    protected boolean contact;
-
-    protected boolean mutualContact;
-
-    protected boolean deleted;
-
-    protected boolean bot;
-
-    protected boolean botChatHistory;
-
-    protected boolean botNochats;
-
-    protected boolean verified;
-
-    protected boolean restricted;
-
-    protected boolean min;
-
-    protected boolean botInlineGeo;
-
-    protected Long accessHash;
-
-    protected String firstName;
-
-    protected String lastName;
-
-    protected String username;
-
-    protected String phone;
-
-    protected TLAbsUserProfilePhoto photo;
-
-    protected TLAbsUserStatus status;
-
-    protected Integer botInfoVersion;
-
-    protected String restrictionReason;
-
-    protected String botInlinePlaceholder;
-
-    protected String langCode;
-
     private final String _constructor = "user#2e13f4c3";
+    protected int flags;
+    protected boolean self;
+    protected boolean contact;
+    protected boolean mutualContact;
+    protected boolean deleted;
+    protected boolean bot;
+    protected boolean botChatHistory;
+    protected boolean botNochats;
+    protected boolean verified;
+    protected boolean restricted;
+    protected boolean min;
+    protected boolean botInlineGeo;
+    protected Long accessHash;
+    protected String firstName;
+    protected String lastName;
+    protected String username;
+    protected String phone;
+    protected TLAbsUserProfilePhoto photo;
+    protected TLAbsUserStatus status;
+    protected Integer botInfoVersion;
+    protected String restrictionReason;
+    protected String botInlinePlaceholder;
+    protected String langCode;
 
     public TLUser() {
     }

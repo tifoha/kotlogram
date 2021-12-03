@@ -10,7 +10,6 @@ import com.github.badoualy.telegram.tl.core.TLVector;
 import com.github.badoualy.telegram.tl.exception.DeserializationException;
 import com.github.badoualy.telegram.tl.exception.InvalidConstructorIdException;
 import com.github.badoualy.telegram.tl.exception.UnsupportedConstructorException;
-
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

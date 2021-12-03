@@ -3,7 +3,6 @@ package com.github.badoualy.telegram.tl.api.messages;
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.TLStickerSet;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,14 +19,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLAllStickers extends TLAbsAllStickers {
-
     public static final int CONSTRUCTOR_ID = 0xedfd405f;
-
-    protected int hash;
-
-    protected TLVector<TLStickerSet> sets;
-
     private final String _constructor = "messages.allStickers#edfd405f";
+    protected int hash;
+    protected TLVector<TLStickerSet> sets;
 
     public TLAllStickers() {
     }

@@ -6,7 +6,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsInputChannel;
 import com.github.badoualy.telegram.tl.api.updates.TLAbsChannelDifference;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,22 +22,14 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestUpdatesGetChannelDifference extends TLMethod<TLAbsChannelDifference> {
-
     public static final int CONSTRUCTOR_ID = 0x3173d78;
-
-    protected int flags;
-
-    protected boolean force;
-
-    protected TLAbsInputChannel channel;
-
-    protected TLAbsChannelMessagesFilter filter;
-
-    protected int pts;
-
-    protected int limit;
-
     private final String _constructor = "updates.getChannelDifference#3173d78";
+    protected int flags;
+    protected boolean force;
+    protected TLAbsInputChannel channel;
+    protected TLAbsChannelMessagesFilter filter;
+    protected int pts;
+    protected int limit;
 
     public TLRequestUpdatesGetChannelDifference() {
     }
@@ -59,9 +50,7 @@ public class TLRequestUpdatesGetChannelDifference extends TLMethod<TLAbsChannelD
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAbsChannelDifference)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAbsChannelDifference) response;
     }

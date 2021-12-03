@@ -2,7 +2,11 @@ package com.github.badoualy.telegram.mtproto.tl
 
 import com.github.badoualy.telegram.tl.core.TLObject
 
-abstract class MTBadMessage @JvmOverloads constructor(var badMsgId: Long = 0, var badMsqSeqno: Int = 0, var errorCode: Int = 0) : TLObject() {
+abstract class MTBadMessage @JvmOverloads constructor(
+    var badMsgId: Long = 0,
+    var badMsqSeqno: Int = 0,
+    var errorCode: Int = 0
+) : TLObject() {
     val errorMessage: String
         get() {
             when (errorCode) {
@@ -29,21 +33,28 @@ abstract class MTBadMessage @JvmOverloads constructor(var badMsgId: Long = 0, va
     companion object {
         @JvmField
         val ERROR_MSG_ID_TOO_LOW = 16
+
         @JvmField
         val ERROR_MSG_ID_TOO_HIGH = 17
+
         @JvmField
         val ERROR_MSG_ID_MODULO = 18
+
         @JvmField
         val ERROR_CONTAINER_MSG_ID_INCORRECT = 19
+
         @JvmField
         val ERROR_TOO_OLD = 20
 
         @JvmField
         val ERROR_SEQNO_TOO_LOW = 32
+
         @JvmField
         val ERROR_SEQNO_TOO_HIGH = 33
+
         @JvmField
         val ERROR_SEQNO_EXPECTED_EVEN = 34
+
         @JvmField
         val ERROR_SEQNO_EXPECTED_ODD = 35
 

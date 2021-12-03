@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,16 +17,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUpdateDialogPinned extends TLAbsUpdate {
-
     public static final int CONSTRUCTOR_ID = 0xd711a2cc;
-
-    protected int flags;
-
-    protected boolean pinned;
-
-    protected TLAbsPeer peer;
-
     private final String _constructor = "updateDialogPinned#d711a2cc";
+    protected int flags;
+    protected boolean pinned;
+    protected TLAbsPeer peer;
 
     public TLUpdateDialogPinned() {
     }

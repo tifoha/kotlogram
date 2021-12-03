@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,14 +17,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLInputMediaPhoto extends TLAbsInputMedia {
-
     public static final int CONSTRUCTOR_ID = 0xe9bfb4f3;
-
-    protected TLAbsInputPhoto id;
-
-    protected String caption;
-
     private final String _constructor = "inputMediaPhoto#e9bfb4f3";
+    protected TLAbsInputPhoto id;
+    protected String caption;
 
     public TLInputMediaPhoto() {
     }

@@ -2,14 +2,12 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.api.utils.DumpUtils;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Collection;
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.io.FileUtils;
 
 public class Benchmark {
 

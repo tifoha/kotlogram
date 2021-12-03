@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,14 +18,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLContactStatus extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xd3680c61;
-
-    protected int userId;
-
-    protected TLAbsUserStatus status;
-
     private final String _constructor = "contactStatus#d3680c61";
+    protected int userId;
+    protected TLAbsUserStatus status;
 
     public TLContactStatus() {
     }

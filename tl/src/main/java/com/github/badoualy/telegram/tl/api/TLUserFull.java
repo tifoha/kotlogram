@@ -3,7 +3,6 @@ package com.github.badoualy.telegram.tl.api;
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.contacts.TLLink;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,32 +22,19 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUserFull extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xf220f3f;
-
-    protected int flags;
-
-    protected boolean blocked;
-
-    protected boolean phoneCallsAvailable;
-
-    protected boolean phoneCallsPrivate;
-
-    protected TLAbsUser user;
-
-    protected String about;
-
-    protected TLLink link;
-
-    protected TLAbsPhoto profilePhoto;
-
-    protected TLAbsPeerNotifySettings notifySettings;
-
-    protected TLBotInfo botInfo;
-
-    protected int commonChatsCount;
-
     private final String _constructor = "userFull#f220f3f";
+    protected int flags;
+    protected boolean blocked;
+    protected boolean phoneCallsAvailable;
+    protected boolean phoneCallsPrivate;
+    protected TLAbsUser user;
+    protected String about;
+    protected TLLink link;
+    protected TLAbsPhoto profilePhoto;
+    protected TLAbsPeerNotifySettings notifySettings;
+    protected TLBotInfo botInfo;
+    protected int commonChatsCount;
 
     public TLUserFull() {
     }

@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -22,20 +21,13 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPaymentRequestedInfo extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x909c3f94;
-
-    protected int flags;
-
-    protected String name;
-
-    protected String phone;
-
-    protected String email;
-
-    protected TLPostAddress shippingAddress;
-
     private final String _constructor = "paymentRequestedInfo#909c3f94";
+    protected int flags;
+    protected String name;
+    protected String phone;
+    protected String email;
+    protected TLPostAddress shippingAddress;
 
     public TLPaymentRequestedInfo() {
     }
@@ -85,8 +77,7 @@ public class TLPaymentRequestedInfo extends TLObject {
         name = (flags & 1) != 0 ? readTLString(stream) : null;
         phone = (flags & 2) != 0 ? readTLString(stream) : null;
         email = (flags & 4) != 0 ? readTLString(stream) : null;
-        shippingAddress = (flags & 8) != 0 ? readTLObject(stream, context, TLPostAddress.class,
-                                                          TLPostAddress.CONSTRUCTOR_ID) : null;
+        shippingAddress = (flags & 8) != 0 ? readTLObject(stream, context, TLPostAddress.class, TLPostAddress.CONSTRUCTOR_ID) : null;
     }
 
     @Override

@@ -1,14 +1,19 @@
 package com.github.badoualy.telegram.mtproto.tl.auth
 
-import com.github.badoualy.telegram.tl.StreamUtils.*
+import com.github.badoualy.telegram.tl.StreamUtils.readBytes
+import com.github.badoualy.telegram.tl.StreamUtils.readTLBytes
+import com.github.badoualy.telegram.tl.StreamUtils.writeByteArray
+import com.github.badoualy.telegram.tl.StreamUtils.writeTLBytes
 import com.github.badoualy.telegram.tl.TLContext
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-class ServerDhOk @JvmOverloads constructor(var nonce: ByteArray = ByteArray(0),
-                                           var serverNonce: ByteArray = ByteArray(0),
-                                           var encryptedAnswer: ByteArray = ByteArray(0)) : ServerDhParams() {
+class ServerDhOk @JvmOverloads constructor(
+    var nonce: ByteArray = ByteArray(0),
+    var serverNonce: ByteArray = ByteArray(0),
+    var encryptedAnswer: ByteArray = ByteArray(0)
+) : ServerDhParams() {
 
     override fun getConstructorId(): Int {
         return CONSTRUCTOR_ID

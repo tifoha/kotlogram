@@ -13,7 +13,8 @@ object Kotlogram {
     val API_LAYER = 66
 
     init {
-        logger.info("""
+        logger.info(
+            """
          __  ___   ______   .___________. __        ______     _______ .______          ___      .___  ___.
         |  |/  /  /  __  \  |           ||  |      /  __  \   /  _____||   _  \        /   \     |   \/   |
         |  '  /  |  |  |  | `---|  |----`|  |     |  |  |  | |  |  __  |  |_)  |      /  ^  \    |  \  /  |
@@ -21,14 +22,18 @@ object Kotlogram {
         |  .  \  |  `--'  |     |  |     |  `----.|  `--'  | |  |__| | |  |\  \----./  _____  \  |  |  |  |
         |__|\__\  \______/      |__|     |_______| \______/   \______| | _| `._____/__/     \__\ |__|  |__|
         Using layer $API_LAYER
-        """)
+        """
+        )
     }
 
-    @JvmOverloads @JvmStatic
-    fun getDefaultClient(application: TelegramApp, apiStorage: TelegramApiStorage,
-                         updateCallback: UpdateCallback? = null,
-                         preferredDataCenter: DataCenter = PROD_DC4,
-                         tag: String = RandomUtils.randomInt().toString())
+    @JvmOverloads
+    @JvmStatic
+    fun getDefaultClient(
+        application: TelegramApp, apiStorage: TelegramApiStorage,
+        updateCallback: UpdateCallback? = null,
+        preferredDataCenter: DataCenter = PROD_DC4,
+        tag: String = RandomUtils.randomInt().toString()
+    )
             : TelegramClient = DefaultTelegramClient(application, apiStorage, updateCallback, preferredDataCenter, tag)
 
     @JvmStatic
@@ -40,11 +45,16 @@ object Kotlogram {
         logger.warn("==================== SHUT DOWN DONE ====================")
     }
 
-    @JvmField val PROD_DC1 = DataCenter("149.154.175.50", 443)
-    @JvmField val PROD_DC2 = DataCenter("149.154.167.51", 443)
-    @JvmField val PROD_DC3 = DataCenter("149.154.175.100", 443)
-    @JvmField val PROD_DC4 = DataCenter("149.154.167.91", 443) // 149.154.166.120
-    @JvmField val PROD_DC5 = DataCenter("91.108.56.165", 443)
+    @JvmField
+    val PROD_DC1 = DataCenter("149.154.175.50", 443)
+    @JvmField
+    val PROD_DC2 = DataCenter("149.154.167.51", 443)
+    @JvmField
+    val PROD_DC3 = DataCenter("149.154.175.100", 443)
+    @JvmField
+    val PROD_DC4 = DataCenter("149.154.167.91", 443) // 149.154.166.120
+    @JvmField
+    val PROD_DC5 = DataCenter("91.108.56.165", 443)
 
     private val PROD_DC1_IP6 = DataCenter("2001:0b28:f23d:f001:0000:0000:0000:000a", 443)
     private val PROD_DC2_IP6 = DataCenter("2001:067c:04e8:f002:0000:0000:0000:000a", 443)

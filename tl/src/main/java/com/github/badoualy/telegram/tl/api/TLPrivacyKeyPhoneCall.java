@@ -5,7 +5,6 @@ package com.github.badoualy.telegram.tl.api;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPrivacyKeyPhoneCall extends TLAbsPrivacyKey {
-
     public static final int CONSTRUCTOR_ID = 0x3d662b7b;
 
     private final String _constructor = "privacyKeyPhoneCall#3d662b7b";

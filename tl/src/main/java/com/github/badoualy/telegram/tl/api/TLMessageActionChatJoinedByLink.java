@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,12 +15,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLMessageActionChatJoinedByLink extends TLAbsMessageAction {
-
     public static final int CONSTRUCTOR_ID = 0xf89cf5e8;
-
-    protected int inviterId;
-
     private final String _constructor = "messageActionChatJoinedByLink#f89cf5e8";
+    protected int inviterId;
 
     public TLMessageActionChatJoinedByLink() {
     }

@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,28 +20,17 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLBotInlineResult extends TLAbsBotInlineResult {
-
     public static final int CONSTRUCTOR_ID = 0x9bebaeb9;
-
-    protected String title;
-
-    protected String description;
-
-    protected String url;
-
-    protected String thumbUrl;
-
-    protected String contentUrl;
-
-    protected String contentType;
-
-    protected Integer w;
-
-    protected Integer h;
-
-    protected Integer duration;
-
     private final String _constructor = "botInlineResult#9bebaeb9";
+    protected String title;
+    protected String description;
+    protected String url;
+    protected String thumbUrl;
+    protected String contentUrl;
+    protected String contentType;
+    protected Integer w;
+    protected Integer h;
+    protected Integer duration;
 
     public TLBotInlineResult() {
     }

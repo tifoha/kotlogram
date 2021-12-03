@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,30 +23,18 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLMessageMediaInvoice extends TLAbsMessageMedia {
-
     public static final int CONSTRUCTOR_ID = 0x84551347;
-
-    protected int flags;
-
-    protected boolean shippingAddressRequested;
-
-    protected boolean test;
-
-    protected String title;
-
-    protected String description;
-
-    protected TLWebDocument photo;
-
-    protected Integer receiptMsgId;
-
-    protected String currency;
-
-    protected long totalAmount;
-
-    protected String startParam;
-
     private final String _constructor = "messageMediaInvoice#84551347";
+    protected int flags;
+    protected boolean shippingAddressRequested;
+    protected boolean test;
+    protected String title;
+    protected String description;
+    protected TLWebDocument photo;
+    protected Integer receiptMsgId;
+    protected String currency;
+    protected long totalAmount;
+    protected String startParam;
 
     public TLMessageMediaInvoice() {
     }
@@ -100,8 +87,7 @@ public class TLMessageMediaInvoice extends TLAbsMessageMedia {
         test = (flags & 8) != 0;
         title = readTLString(stream);
         description = readTLString(stream);
-        photo = (flags & 1) != 0 ? readTLObject(stream, context, TLWebDocument.class,
-                                                TLWebDocument.CONSTRUCTOR_ID) : null;
+        photo = (flags & 1) != 0 ? readTLObject(stream, context, TLWebDocument.class, TLWebDocument.CONSTRUCTOR_ID) : null;
         receiptMsgId = (flags & 4) != 0 ? readInt(stream) : null;
         currency = readTLString(stream);
         totalAmount = readLong(stream);

@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api.auth;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -22,22 +21,14 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLSentCode extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x5e002502;
-
-    protected int flags;
-
-    protected boolean phoneRegistered;
-
-    protected TLAbsSentCodeType type;
-
-    protected String phoneCodeHash;
-
-    protected TLAbsCodeType nextType;
-
-    protected Integer timeout;
-
     private final String _constructor = "auth.sentCode#5e002502";
+    protected int flags;
+    protected boolean phoneRegistered;
+    protected TLAbsSentCodeType type;
+    protected String phoneCodeHash;
+    protected TLAbsCodeType nextType;
+    protected Integer timeout;
 
     public TLSentCode() {
     }

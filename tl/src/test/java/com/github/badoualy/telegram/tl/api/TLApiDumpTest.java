@@ -2,17 +2,15 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.api.utils.DumpUtils;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.io.FilenameUtils;
-import org.testng.Assert;
-import org.testng.ITest;
-import org.testng.annotations.Factory;
-import org.testng.annotations.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.io.FilenameUtils;
+import org.assertj.core.api.Assertions;
+import org.testng.ITest;
+import org.testng.annotations.Factory;
+import org.testng.annotations.Test;
 
 /**
  * Unit test that will read all dump and try to de-serialize then re-serialize then, checking each time if the content
@@ -37,11 +35,13 @@ public class TLApiDumpTest implements ITest {
         // Deserialize and check if json is identical
         TLObject tlObject = TLApiTestContext.getInstance().deserializeMessage(realSerialized);
         String json = DumpUtils.toJson(tlObject);
-        Assert.assertEquals(json, realJson, file.getName());
+        Assertions.assertThat(json).as(file.getName())
+                .isEqualToIgnoringNewLines(realJson);
 
         // Re-serialize and check bytes
         byte[] serialized = tlObject.serialize();
-        Assert.assertEquals(serialized, realSerialized, file.getName());
+        Assertions.assertThat(serialized).as(file.getName())
+                .isEqualTo(realSerialized);
     }
 
     @Override

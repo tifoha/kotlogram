@@ -7,7 +7,6 @@ import com.github.badoualy.telegram.tl.api.TLPaymentRequestedInfo;
 import com.github.badoualy.telegram.tl.api.TLShippingOption;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -32,32 +31,19 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPaymentReceipt extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x500911e1;
-
-    protected int flags;
-
-    protected int date;
-
-    protected int botId;
-
-    protected TLInvoice invoice;
-
-    protected int providerId;
-
-    protected TLPaymentRequestedInfo info;
-
-    protected TLShippingOption shipping;
-
-    protected String currency;
-
-    protected long totalAmount;
-
-    protected String credentialsTitle;
-
-    protected TLVector<TLAbsUser> users;
-
     private final String _constructor = "payments.paymentReceipt#500911e1";
+    protected int flags;
+    protected int date;
+    protected int botId;
+    protected TLInvoice invoice;
+    protected int providerId;
+    protected TLPaymentRequestedInfo info;
+    protected TLShippingOption shipping;
+    protected String currency;
+    protected long totalAmount;
+    protected String credentialsTitle;
+    protected TLVector<TLAbsUser> users;
 
     public TLPaymentReceipt() {
     }
@@ -112,10 +98,8 @@ public class TLPaymentReceipt extends TLObject {
         botId = readInt(stream);
         invoice = readTLObject(stream, context, TLInvoice.class, TLInvoice.CONSTRUCTOR_ID);
         providerId = readInt(stream);
-        info = (flags & 1) != 0 ? readTLObject(stream, context, TLPaymentRequestedInfo.class,
-                                               TLPaymentRequestedInfo.CONSTRUCTOR_ID) : null;
-        shipping = (flags & 2) != 0 ? readTLObject(stream, context, TLShippingOption.class,
-                                                   TLShippingOption.CONSTRUCTOR_ID) : null;
+        info = (flags & 1) != 0 ? readTLObject(stream, context, TLPaymentRequestedInfo.class, TLPaymentRequestedInfo.CONSTRUCTOR_ID) : null;
+        shipping = (flags & 2) != 0 ? readTLObject(stream, context, TLShippingOption.class, TLShippingOption.CONSTRUCTOR_ID) : null;
         currency = readTLString(stream);
         totalAmount = readLong(stream);
         credentialsTitle = readTLString(stream);

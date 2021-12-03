@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLBytes;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,26 +27,16 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUpdateBotPrecheckoutQuery extends TLAbsUpdate {
-
     public static final int CONSTRUCTOR_ID = 0x5d2f3aa9;
-
-    protected int flags;
-
-    protected long queryId;
-
-    protected int userId;
-
-    protected TLBytes payload;
-
-    protected TLPaymentRequestedInfo info;
-
-    protected String shippingOptionId;
-
-    protected String currency;
-
-    protected long totalAmount;
-
     private final String _constructor = "updateBotPrecheckoutQuery#5d2f3aa9";
+    protected int flags;
+    protected long queryId;
+    protected int userId;
+    protected TLBytes payload;
+    protected TLPaymentRequestedInfo info;
+    protected String shippingOptionId;
+    protected String currency;
+    protected long totalAmount;
 
     public TLUpdateBotPrecheckoutQuery() {
     }
@@ -95,8 +84,7 @@ public class TLUpdateBotPrecheckoutQuery extends TLAbsUpdate {
         queryId = readLong(stream);
         userId = readInt(stream);
         payload = readTLBytes(stream, context);
-        info = (flags & 1) != 0 ? readTLObject(stream, context, TLPaymentRequestedInfo.class,
-                                               TLPaymentRequestedInfo.CONSTRUCTOR_ID) : null;
+        info = (flags & 1) != 0 ? readTLObject(stream, context, TLPaymentRequestedInfo.class, TLPaymentRequestedInfo.CONSTRUCTOR_ID) : null;
         shippingOptionId = (flags & 2) != 0 ? readTLString(stream) : null;
         currency = readTLString(stream);
         totalAmount = readLong(stream);

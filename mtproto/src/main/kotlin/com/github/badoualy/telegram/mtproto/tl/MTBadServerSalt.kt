@@ -1,12 +1,20 @@
 package com.github.badoualy.telegram.mtproto.tl
 
-import com.github.badoualy.telegram.tl.StreamUtils.*
+import com.github.badoualy.telegram.tl.StreamUtils.readInt
+import com.github.badoualy.telegram.tl.StreamUtils.readLong
+import com.github.badoualy.telegram.tl.StreamUtils.writeInt
+import com.github.badoualy.telegram.tl.StreamUtils.writeLong
 import com.github.badoualy.telegram.tl.TLContext
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-class MTBadServerSalt @JvmOverloads constructor(badMsgId: Long = 0, badMsqSeqno: Int = 0, errorCode: Int = 0, var newSalt: Long = 0) : MTBadMessage(badMsgId, badMsqSeqno, errorCode) {
+class MTBadServerSalt @JvmOverloads constructor(
+    badMsgId: Long = 0,
+    badMsqSeqno: Int = 0,
+    errorCode: Int = 0,
+    var newSalt: Long = 0
+) : MTBadMessage(badMsgId, badMsqSeqno, errorCode) {
 
     override fun getConstructorId(): Int {
         return CONSTRUCTOR_ID

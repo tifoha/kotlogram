@@ -51,14 +51,20 @@ class TLTypeConditional(val value: Int, val realType: TLType) : TLType() {
 }
 
 // 1 Constructor = 1 class = 1 type
-class TLConstructor(val name: String, val id: Int, val parameters: ArrayList<TLParameter>, val tlType: TLTypeRaw) : Comparable<TLConstructor> {
+class TLConstructor(val name: String, val id: Int, val parameters: ArrayList<TLParameter>, val tlType: TLTypeRaw) :
+    Comparable<TLConstructor> {
     override fun toString() = "$name#${hex(id)} -> $tlType"
     override fun compareTo(other: TLConstructor) = name.compareTo(other.name)
     override fun equals(other: Any?) = other is TLConstructor && other.name == name && other.id == id
     override fun hashCode() = toString().hashCode()
 }
 
-class TLAbstractConstructor(val name: String, val parameters: List<TLParameter>, val tlType: TLTypeRaw, val abstractEmptyConstructor: Boolean) : Comparable<TLAbstractConstructor> {
+class TLAbstractConstructor(
+    val name: String,
+    val parameters: List<TLParameter>,
+    val tlType: TLTypeRaw,
+    val abstractEmptyConstructor: Boolean
+) : Comparable<TLAbstractConstructor> {
     override fun toString() = "$name -> $tlType"
     override fun compareTo(other: TLAbstractConstructor) = name.compareTo(other.name)
     override fun equals(other: Any?) = other is TLConstructor && other.name == name
@@ -66,7 +72,8 @@ class TLAbstractConstructor(val name: String, val parameters: List<TLParameter>,
 }
 
 // Method: 1 method = 1 class = 1 rpc call "model class"
-class TLMethod(val name: String, val id: Int, val parameters: List<TLParameter>, val tlType: TLType) : Comparable<TLMethod> {
+class TLMethod(val name: String, val id: Int, val parameters: List<TLParameter>, val tlType: TLType) :
+    Comparable<TLMethod> {
     override fun toString() = "$name#${hex(id)}"
     override fun compareTo(other: TLMethod) = name.compareTo(other.name)
     override fun equals(other: Any?) = other is TLMethod && other.name == name && other.id == id

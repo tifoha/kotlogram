@@ -27,7 +27,8 @@ class ReqPQ constructor(nonce: ByteArray? = null) : TLMethod<ResPQ>() {
 
     @Throws(IOException::class)
     override fun deserializeResponse(stream: InputStream, context: TLContext): ResPQ {
-        val response = context.deserializeMessage(stream) ?: throw DeserializationException("Unable to deserialize response")
+        val response =
+            context.deserializeMessage(stream) ?: throw DeserializationException("Unable to deserialize response")
         if (response !is ResPQ) {
             throw DeserializationException("Response has incorrect type")
         }

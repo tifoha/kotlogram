@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsInputUser;
 import com.github.badoualy.telegram.tl.api.TLAbsUser;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,12 +18,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestUsersGetUsers extends TLMethod<TLVector<TLAbsUser>> {
-
     public static final int CONSTRUCTOR_ID = 0xd91a548;
-
-    protected TLVector<TLAbsInputUser> id;
-
     private final String _constructor = "users.getUsers#d91a548";
+    protected TLVector<TLAbsInputUser> id;
 
     public TLRequestUsersGetUsers() {
     }

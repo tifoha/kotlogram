@@ -1,6 +1,11 @@
 package com.github.badoualy.telegram.api
 
-import com.github.badoualy.telegram.tl.api.*
+import com.github.badoualy.telegram.tl.api.TLUpdateShort
+import com.github.badoualy.telegram.tl.api.TLUpdateShortChatMessage
+import com.github.badoualy.telegram.tl.api.TLUpdateShortMessage
+import com.github.badoualy.telegram.tl.api.TLUpdateShortSentMessage
+import com.github.badoualy.telegram.tl.api.TLUpdates
+import com.github.badoualy.telegram.tl.api.TLUpdatesCombined
 
 interface UpdateCallback {
 

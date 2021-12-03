@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsInputPhoto;
 import com.github.badoualy.telegram.tl.api.TLAbsUserProfilePhoto;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,12 +18,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestPhotosUpdateProfilePhoto extends TLMethod<TLAbsUserProfilePhoto> {
-
     public static final int CONSTRUCTOR_ID = 0xf0bb5152;
-
-    protected TLAbsInputPhoto id;
-
     private final String _constructor = "photos.updateProfilePhoto#f0bb5152";
+    protected TLAbsInputPhoto id;
 
     public TLRequestPhotosUpdateProfilePhoto() {
     }
@@ -41,9 +37,7 @@ public class TLRequestPhotosUpdateProfilePhoto extends TLMethod<TLAbsUserProfile
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAbsUserProfilePhoto)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAbsUserProfilePhoto) response;
     }

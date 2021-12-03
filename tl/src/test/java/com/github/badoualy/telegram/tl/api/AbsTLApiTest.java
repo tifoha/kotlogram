@@ -7,11 +7,6 @@ import com.github.badoualy.telegram.tl.core.TLLongVector;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLStringVector;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
-import org.apache.commons.lang3.RandomStringUtils;
-import org.reflections.Reflections;
-import org.reflections.util.ClasspathHelper;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -24,6 +19,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.reflections.Reflections;
+import org.reflections.util.ClasspathHelper;
 
 public abstract class AbsTLApiTest {
 

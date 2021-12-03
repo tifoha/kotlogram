@@ -11,7 +11,9 @@ import java.util.*
 
 class MTMessagesContainer : TLObject {
 
-    val messages = TreeSet(Comparator<MTMessage> { mtMessage, mtMessage2 -> Math.signum((mtMessage.messageId - mtMessage2.messageId).toDouble()).toInt() })
+    val messages = TreeSet(Comparator<MTMessage> { mtMessage, mtMessage2 ->
+        Math.signum((mtMessage.messageId - mtMessage2.messageId).toDouble()).toInt()
+    })
 
     constructor(messages: Array<MTMessage>) {
         Collections.addAll(this.messages, *messages)

@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.core.TLBool;
 import com.github.badoualy.telegram.tl.core.TLBytes;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,18 +26,12 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLBytesSerial
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestAuthBindTempAuthKey extends TLMethod<TLBool> {
-
     public static final int CONSTRUCTOR_ID = 0xcdd42a05;
-
-    protected long permAuthKeyId;
-
-    protected long nonce;
-
-    protected int expiresAt;
-
-    protected TLBytes encryptedMessage;
-
     private final String _constructor = "auth.bindTempAuthKey#cdd42a05";
+    protected long permAuthKeyId;
+    protected long nonce;
+    protected int expiresAt;
+    protected TLBytes encryptedMessage;
 
     public TLRequestAuthBindTempAuthKey() {
     }
@@ -58,9 +51,7 @@ public class TLRequestAuthBindTempAuthKey extends TLMethod<TLBool> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLBool)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLBool) response;
     }

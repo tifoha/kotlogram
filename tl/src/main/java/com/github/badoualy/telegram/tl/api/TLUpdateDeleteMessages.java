@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLIntVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,16 +18,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUpdateDeleteMessages extends TLAbsUpdate {
-
     public static final int CONSTRUCTOR_ID = 0xa20db0e5;
-
-    protected TLIntVector messages;
-
-    protected int pts;
-
-    protected int ptsCount;
-
     private final String _constructor = "updateDeleteMessages#a20db0e5";
+    protected TLIntVector messages;
+    protected int pts;
+    protected int ptsCount;
 
     public TLUpdateDeleteMessages() {
     }

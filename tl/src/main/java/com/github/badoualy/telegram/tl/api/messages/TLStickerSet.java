@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsDocument;
 import com.github.badoualy.telegram.tl.api.TLStickerPack;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,16 +20,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLStickerSet extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xb60a24a6;
-
-    protected com.github.badoualy.telegram.tl.api.TLStickerSet set;
-
-    protected TLVector<TLStickerPack> packs;
-
-    protected TLVector<TLAbsDocument> documents;
-
     private final String _constructor = "messages.stickerSet#b60a24a6";
+    protected com.github.badoualy.telegram.tl.api.TLStickerSet set;
+    protected TLVector<TLStickerPack> packs;
+    protected TLVector<TLAbsDocument> documents;
 
     public TLStickerSet() {
     }
@@ -51,8 +45,7 @@ public class TLStickerSet extends TLObject {
     @Override
     @SuppressWarnings({"unchecked", "SimplifiableConditionalExpression"})
     public void deserializeBody(InputStream stream, TLContext context) throws IOException {
-        set = readTLObject(stream, context, com.github.badoualy.telegram.tl.api.TLStickerSet.class,
-                           com.github.badoualy.telegram.tl.api.TLStickerSet.CONSTRUCTOR_ID);
+        set = readTLObject(stream, context, com.github.badoualy.telegram.tl.api.TLStickerSet.class, com.github.badoualy.telegram.tl.api.TLStickerSet.CONSTRUCTOR_ID);
         packs = readTLVector(stream, context);
         documents = readTLVector(stream, context);
     }

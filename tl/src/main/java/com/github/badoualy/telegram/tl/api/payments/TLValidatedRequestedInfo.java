@@ -4,7 +4,6 @@ import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.TLShippingOption;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,16 +23,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLValidatedRequestedInfo extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xd1451883;
-
-    protected int flags;
-
-    protected String id;
-
-    protected TLVector<TLShippingOption> shippingOptions;
-
     private final String _constructor = "payments.validatedRequestedInfo#d1451883";
+    protected int flags;
+    protected String id;
+    protected TLVector<TLShippingOption> shippingOptions;
 
     public TLValidatedRequestedInfo() {
     }

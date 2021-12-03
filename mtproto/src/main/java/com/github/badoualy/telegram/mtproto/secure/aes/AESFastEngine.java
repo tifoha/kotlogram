@@ -534,22 +534,13 @@ public class AESFastEngine {
                     0xbc0c25e2, 0x288b493c, 0xff41950d, 0x397101a8, 0x08deb30c,
                     0xd89ce4b4, 0x6490c156, 0x7b6184cb, 0xd570b632, 0x48745c6c,
                     0xd04257b8};
-
-    private int shift(
-            int r,
-            int shift) {
-        return (r >>> shift) | (r << -shift);
-    }
+    private static final int m1 = 0x80808080;
 
     /* multiply four bytes in GF(2^8) by 'x' {02} in parallel */
-
-    private static final int m1 = 0x80808080;
     private static final int m2 = 0x7f7f7f7f;
     private static final int m3 = 0x0000001b;
-
-    private int FFmulX(int x) {
-        return (((x & m2) << 1) ^ (((x & m1) >>> 7) * m3));
-    }
+    private static final int BLOCK_SIZE = 16;
+    private int ROUNDS;
 
     /* 
        The following defines provide alternative definitions of FFmulX that might
@@ -560,6 +551,25 @@ public class AESFastEngine {
        private int FFmulX(int x) { int u = x & m1; return ((x & m2) << 1) ^ ((u - (u >>> 7)) & m4); } 
 
     */
+    private int[][] WorkingKey = null;
+    private int C0, C1, C2, C3;
+    private boolean forEncryption;
+
+    /**
+     * default constructor - 128 bit block size.
+     */
+    public AESFastEngine() {
+    }
+
+    private int shift(
+            int r,
+            int shift) {
+        return (r >>> shift) | (r << -shift);
+    }
+
+    private int FFmulX(int x) {
+        return (((x & m2) << 1) ^ (((x & m1) >>> 7) * m3));
+    }
 
     private int inv_mcol(int x) {
         int f2 = FFmulX(x);
@@ -569,7 +579,6 @@ public class AESFastEngine {
 
         return f2 ^ f4 ^ f8 ^ shift(f2 ^ f9, 8) ^ shift(f4 ^ f9, 16) ^ shift(f9, 24);
     }
-
 
     private int subWord(int x) {
         return (S[x & 255] & 255 | ((S[(x >> 8) & 255] & 255) << 8) | ((S[(x >> 16) & 255] & 255) << 16) | S[(x >> 24) & 255] << 24);
@@ -631,19 +640,6 @@ public class AESFastEngine {
         }
 
         return W;
-    }
-
-    private int ROUNDS;
-    private int[][] WorkingKey = null;
-    private int C0, C1, C2, C3;
-    private boolean forEncryption;
-
-    private static final int BLOCK_SIZE = 16;
-
-    /**
-     * default constructor - 128 bit block size.
-     */
-    public AESFastEngine() {
     }
 
     /**

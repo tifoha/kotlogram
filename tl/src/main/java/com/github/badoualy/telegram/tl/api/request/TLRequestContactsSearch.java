@@ -4,7 +4,6 @@ import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.contacts.TLFound;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,14 +22,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestContactsSearch extends TLMethod<TLFound> {
-
     public static final int CONSTRUCTOR_ID = 0x11f812d8;
-
-    protected String q;
-
-    protected int limit;
-
     private final String _constructor = "contacts.search#11f812d8";
+    protected String q;
+    protected int limit;
 
     public TLRequestContactsSearch() {
     }
@@ -48,9 +43,7 @@ public class TLRequestContactsSearch extends TLMethod<TLFound> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLFound)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLFound) response;
     }

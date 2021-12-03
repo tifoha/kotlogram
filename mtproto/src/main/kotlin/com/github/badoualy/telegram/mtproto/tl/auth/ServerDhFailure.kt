@@ -7,8 +7,10 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-class ServerDhFailure @JvmOverloads constructor(var nonce: ByteArray = ByteArray(0), var serverNonce: ByteArray = ByteArray(0),
-                                                var newNonceHash: ByteArray = ByteArray(0)) : ServerDhParams() {
+class ServerDhFailure @JvmOverloads constructor(
+    var nonce: ByteArray = ByteArray(0), var serverNonce: ByteArray = ByteArray(0),
+    var newNonceHash: ByteArray = ByteArray(0)
+) : ServerDhParams() {
 
     override fun getConstructorId(): Int {
         return CONSTRUCTOR_ID

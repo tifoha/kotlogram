@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api.upload;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLBytes;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,18 +19,12 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLBytesSerial
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLFileCdnRedirect extends TLAbsFile {
-
     public static final int CONSTRUCTOR_ID = 0x1508485a;
-
-    protected int dcId;
-
-    protected TLBytes fileToken;
-
-    protected TLBytes encryptionKey;
-
-    protected TLBytes encryptionIv;
-
     private final String _constructor = "upload.fileCdnRedirect#1508485a";
+    protected int dcId;
+    protected TLBytes fileToken;
+    protected TLBytes encryptionKey;
+    protected TLBytes encryptionIv;
 
     public TLFileCdnRedirect() {
     }

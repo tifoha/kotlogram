@@ -13,16 +13,7 @@ import com.github.badoualy.telegram.tl.core.TLObject;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public abstract class TLAbsInputPhoto extends TLObject {
-
     public TLAbsInputPhoto() {
-    }
-
-    public abstract boolean isEmpty();
-
-    public abstract boolean isNotEmpty();
-
-    public TLInputPhoto getAsInputPhoto() {
-        return null;
     }
 
     public static TLInputPhotoEmpty newEmpty() {
@@ -31,5 +22,13 @@ public abstract class TLAbsInputPhoto extends TLObject {
 
     public static TLInputPhoto newNotEmpty() {
         return new TLInputPhoto();
+    }
+
+    public abstract boolean isEmpty();
+
+    public abstract boolean isNotEmpty();
+
+    public TLInputPhoto getAsInputPhoto() {
+        return null;
     }
 }

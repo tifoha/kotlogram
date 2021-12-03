@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,18 +20,12 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUpdateUserPhoto extends TLAbsUpdate {
-
     public static final int CONSTRUCTOR_ID = 0x95313b0c;
-
-    protected int userId;
-
-    protected int date;
-
-    protected TLAbsUserProfilePhoto photo;
-
-    protected boolean previous;
-
     private final String _constructor = "updateUserPhoto#95313b0c";
+    protected int userId;
+    protected int date;
+    protected TLAbsUserProfilePhoto photo;
+    protected boolean previous;
 
     public TLUpdateUserPhoto() {
     }

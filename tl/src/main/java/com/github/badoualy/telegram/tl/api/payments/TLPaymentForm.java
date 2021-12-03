@@ -8,7 +8,6 @@ import com.github.badoualy.telegram.tl.api.TLPaymentRequestedInfo;
 import com.github.badoualy.telegram.tl.api.TLPaymentSavedCredentialsCard;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -30,34 +29,20 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPaymentForm extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x3f56aea3;
-
-    protected int flags;
-
-    protected boolean canSaveCredentials;
-
-    protected boolean passwordMissing;
-
-    protected int botId;
-
-    protected TLInvoice invoice;
-
-    protected int providerId;
-
-    protected String url;
-
-    protected String nativeProvider;
-
-    protected TLDataJSON nativeParams;
-
-    protected TLPaymentRequestedInfo savedInfo;
-
-    protected TLPaymentSavedCredentialsCard savedCredentials;
-
-    protected TLVector<TLAbsUser> users;
-
     private final String _constructor = "payments.paymentForm#3f56aea3";
+    protected int flags;
+    protected boolean canSaveCredentials;
+    protected boolean passwordMissing;
+    protected int botId;
+    protected TLInvoice invoice;
+    protected int providerId;
+    protected String url;
+    protected String nativeProvider;
+    protected TLDataJSON nativeParams;
+    protected TLPaymentRequestedInfo savedInfo;
+    protected TLPaymentSavedCredentialsCard savedCredentials;
+    protected TLVector<TLAbsUser> users;
 
     public TLPaymentForm() {
     }
@@ -125,12 +110,9 @@ public class TLPaymentForm extends TLObject {
         providerId = readInt(stream);
         url = readTLString(stream);
         nativeProvider = (flags & 16) != 0 ? readTLString(stream) : null;
-        nativeParams = (flags & 16) != 0 ? readTLObject(stream, context, TLDataJSON.class,
-                                                        TLDataJSON.CONSTRUCTOR_ID) : null;
-        savedInfo = (flags & 1) != 0 ? readTLObject(stream, context, TLPaymentRequestedInfo.class,
-                                                    TLPaymentRequestedInfo.CONSTRUCTOR_ID) : null;
-        savedCredentials = (flags & 2) != 0 ? readTLObject(stream, context, TLPaymentSavedCredentialsCard.class,
-                                                           TLPaymentSavedCredentialsCard.CONSTRUCTOR_ID) : null;
+        nativeParams = (flags & 16) != 0 ? readTLObject(stream, context, TLDataJSON.class, TLDataJSON.CONSTRUCTOR_ID) : null;
+        savedInfo = (flags & 1) != 0 ? readTLObject(stream, context, TLPaymentRequestedInfo.class, TLPaymentRequestedInfo.CONSTRUCTOR_ID) : null;
+        savedCredentials = (flags & 2) != 0 ? readTLObject(stream, context, TLPaymentSavedCredentialsCard.class, TLPaymentSavedCredentialsCard.CONSTRUCTOR_ID) : null;
         users = readTLVector(stream, context);
     }
 

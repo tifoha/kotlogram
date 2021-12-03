@@ -4,7 +4,6 @@ import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLLongVector;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,14 +19,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestInvokeAfterMsgs<T extends TLObject> extends TLMethod<T> {
-
     public static final int CONSTRUCTOR_ID = 0x3dc4b4f0;
-
-    protected TLLongVector msgIds;
-
-    protected TLMethod<T> query;
-
     private final String _constructor = "invokeAfterMsgs#3dc4b4f0";
+    protected TLLongVector msgIds;
+    protected TLMethod<T> query;
 
     public TLRequestInvokeAfterMsgs() {
     }

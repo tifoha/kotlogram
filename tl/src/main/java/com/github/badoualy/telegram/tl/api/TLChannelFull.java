@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,36 +23,21 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLChannelFull extends TLAbsChatFull {
-
     public static final int CONSTRUCTOR_ID = 0xc3d5512f;
-
-    protected int flags;
-
-    protected boolean canViewParticipants;
-
-    protected boolean canSetUsername;
-
-    protected String about;
-
-    protected Integer participantsCount;
-
-    protected Integer adminsCount;
-
-    protected Integer kickedCount;
-
-    protected int readInboxMaxId;
-
-    protected int readOutboxMaxId;
-
-    protected int unreadCount;
-
-    protected Integer migratedFromChatId;
-
-    protected Integer migratedFromMaxId;
-
-    protected Integer pinnedMsgId;
-
     private final String _constructor = "channelFull#c3d5512f";
+    protected int flags;
+    protected boolean canViewParticipants;
+    protected boolean canSetUsername;
+    protected String about;
+    protected Integer participantsCount;
+    protected Integer adminsCount;
+    protected Integer kickedCount;
+    protected int readInboxMaxId;
+    protected int readOutboxMaxId;
+    protected int unreadCount;
+    protected Integer migratedFromChatId;
+    protected Integer migratedFromMaxId;
+    protected Integer pinnedMsgId;
 
     public TLChannelFull() {
     }

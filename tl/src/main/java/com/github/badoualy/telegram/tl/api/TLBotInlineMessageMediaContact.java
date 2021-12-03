@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,16 +20,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLBotInlineMessageMediaContact extends TLAbsBotInlineMessage {
-
     public static final int CONSTRUCTOR_ID = 0x35edb4d4;
-
-    protected String phoneNumber;
-
-    protected String firstName;
-
-    protected String lastName;
-
     private final String _constructor = "botInlineMessageMediaContact#35edb4d4";
+    protected String phoneNumber;
+    protected String firstName;
+    protected String lastName;
 
     public TLBotInlineMessageMediaContact() {
     }

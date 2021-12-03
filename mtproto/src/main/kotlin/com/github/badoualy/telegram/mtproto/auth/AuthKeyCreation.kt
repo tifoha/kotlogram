@@ -5,12 +5,35 @@ import com.github.badoualy.telegram.mtproto.exception.AuthorizationException
 import com.github.badoualy.telegram.mtproto.exception.FingerprintNotFoundException
 import com.github.badoualy.telegram.mtproto.exception.SecurityException
 import com.github.badoualy.telegram.mtproto.model.DataCenter
-import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.*
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.AES256IGEDecrypt
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.AES256IGEEncrypt
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.RSA
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.SHA1
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.align
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.alignKeyZero
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.concat
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.fromBigInt
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.loadBigInt
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.substring
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.xor
 import com.github.badoualy.telegram.mtproto.secure.Key
 import com.github.badoualy.telegram.mtproto.secure.RandomUtils
 import com.github.badoualy.telegram.mtproto.secure.pq.PQSolver
 import com.github.badoualy.telegram.mtproto.time.TimeOverlord
-import com.github.badoualy.telegram.mtproto.tl.auth.*
+import com.github.badoualy.telegram.mtproto.tl.auth.ClientDhInner
+import com.github.badoualy.telegram.mtproto.tl.auth.DhGenFailure
+import com.github.badoualy.telegram.mtproto.tl.auth.DhGenOk
+import com.github.badoualy.telegram.mtproto.tl.auth.DhGenRetry
+import com.github.badoualy.telegram.mtproto.tl.auth.PQInner
+import com.github.badoualy.telegram.mtproto.tl.auth.PQInnerTemp
+import com.github.badoualy.telegram.mtproto.tl.auth.ReqDhParams
+import com.github.badoualy.telegram.mtproto.tl.auth.ReqPQ
+import com.github.badoualy.telegram.mtproto.tl.auth.ReqSetDhClientParams
+import com.github.badoualy.telegram.mtproto.tl.auth.ResPQ
+import com.github.badoualy.telegram.mtproto.tl.auth.ServerDhFailure
+import com.github.badoualy.telegram.mtproto.tl.auth.ServerDhInner
+import com.github.badoualy.telegram.mtproto.tl.auth.ServerDhOk
+import com.github.badoualy.telegram.mtproto.tl.auth.TLAuthContext
 import com.github.badoualy.telegram.mtproto.transport.MTProtoConnection
 import com.github.badoualy.telegram.mtproto.transport.MTProtoTcpConnection
 import com.github.badoualy.telegram.mtproto.util.Pair
@@ -18,12 +41,12 @@ import com.github.badoualy.telegram.mtproto.util.SolvedPQ
 import com.github.badoualy.telegram.tl.StreamUtils
 import com.github.badoualy.telegram.tl.core.TLMethod
 import com.github.badoualy.telegram.tl.core.TLObject
-import org.slf4j.LoggerFactory
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.math.BigInteger
 import java.util.*
+import org.slf4j.LoggerFactory
 
 /**
  * Helper class to execute the "Creating an Authorization Key" flow
@@ -46,8 +69,10 @@ object AuthKeyCreation {
      * @return an object containing the auth key, the connection created, and the server salt received, or null if the creation failed
      * @see [Creating an Authorization Key](https://core.telegram.org/mtproto/auth_key)
      */
-    @JvmStatic @JvmOverloads
-    fun createAuthKey(dataCenter: DataCenter, tag: String = RandomUtils.randomInt().toString()) = createAuthKeyInternal(dataCenter, false, tag)
+    @JvmStatic
+    @JvmOverloads
+    fun createAuthKey(dataCenter: DataCenter, tag: String = RandomUtils.randomInt().toString()) =
+        createAuthKeyInternal(dataCenter, false, tag)
 
     /**
      * Create a temporary authorization key
@@ -69,7 +94,10 @@ object AuthKeyCreation {
             try {
                 connection = MTProtoTcpConnection(dataCenter.ip, dataCenter.port, tag)
                 val authResult = createKey(tmpKey)
-                logger.debug(connection!!.marker, "Key created after ${i + 1} attempt in ${System.currentTimeMillis() - start} ms")
+                logger.debug(
+                    connection!!.marker,
+                    "Key created after ${i + 1} attempt in ${System.currentTimeMillis() - start} ms"
+                )
                 connection = null
                 return authResult
             } catch (e: FingerprintNotFoundException) {
@@ -129,14 +157,23 @@ object AuthKeyCreation {
 
     /** see https://core.telegram.org/mtproto/auth_key#presenting-proof-of-work-server-authentication  */
     @Throws(IOException::class)
-    private fun createStep4Request(resPQ: ResPQ, pq: SolvedPQ, publicKey: Key, tmpKey: Boolean): Pair<ReqDhParams, ByteArray> {
+    private fun createStep4Request(
+        resPQ: ResPQ,
+        pq: SolvedPQ,
+        publicKey: Key,
+        tmpKey: Boolean
+    ): Pair<ReqDhParams, ByteArray> {
         val newNonce = RandomUtils.randomInt256()
         val pqInnerData = if (tmpKey)
-            PQInnerTemp(resPQ.pq, fromBigInt(pq.p), fromBigInt(pq.q),
-                    resPQ.nonce, resPQ.serverNonce, newNonce, tmpKeyExpireDelay)
+            PQInnerTemp(
+                resPQ.pq, fromBigInt(pq.p), fromBigInt(pq.q),
+                resPQ.nonce, resPQ.serverNonce, newNonce, tmpKeyExpireDelay
+            )
         else
-            PQInner(resPQ.pq, fromBigInt(pq.p), fromBigInt(pq.q),
-                    resPQ.nonce, resPQ.serverNonce, newNonce)
+            PQInner(
+                resPQ.pq, fromBigInt(pq.p), fromBigInt(pq.q),
+                resPQ.nonce, resPQ.serverNonce, newNonce
+            )
 
         val data = pqInnerData.serialize()
         val hash = SHA1(data)
@@ -145,20 +182,31 @@ object AuthKeyCreation {
         val dataWithHash = concat(hash, data, padding)
         val encryptedData = RSA(dataWithHash, publicKey.publicKey, publicKey.exponent)
 
-        val reqDhParams = ReqDhParams(resPQ.nonce, resPQ.serverNonce,
-                fromBigInt(pq.p), fromBigInt(pq.q), publicKey.fingerprint,
-                encryptedData)
+        val reqDhParams = ReqDhParams(
+            resPQ.nonce, resPQ.serverNonce,
+            fromBigInt(pq.p), fromBigInt(pq.q), publicKey.fingerprint,
+            encryptedData
+        )
         return Pair.create(reqDhParams, newNonce)
     }
 
     /** see https://core.telegram.org/mtproto/auth_key#dh-key-exchange-complete  */
     @Throws(IOException::class)
-    private fun lastStep(resPQ: ResPQ, newNonce: ByteArray, serverDhOk: ServerDhOk, @Suppress("UNUSED_PARAMETER") step4Duration: Long): Pair<ByteArray, Long> {
+    private fun lastStep(
+        resPQ: ResPQ,
+        newNonce: ByteArray,
+        serverDhOk: ServerDhOk,
+        @Suppress("UNUSED_PARAMETER") step4Duration: Long
+    ): Pair<ByteArray, Long> {
         val encryptedAnswer = serverDhOk.encryptedAnswer
         val tmpAesKey = concat(SHA1(newNonce, resPQ.serverNonce), substring(SHA1(resPQ.serverNonce, newNonce), 0, 12))
-        val tmpAesIv = concat(concat(substring(SHA1(resPQ.serverNonce, newNonce), 12, 8),
-                SHA1(newNonce, newNonce)),
-                substring(newNonce, 0, 4))
+        val tmpAesIv = concat(
+            concat(
+                substring(SHA1(resPQ.serverNonce, newNonce), 12, 8),
+                SHA1(newNonce, newNonce)
+            ),
+            substring(newNonce, 0, 4)
+        )
 
         val answer = AES256IGEDecrypt(encryptedAnswer, tmpAesIv, tmpAesKey)
         val stream = ByteArrayInputStream(answer)
@@ -195,7 +243,8 @@ object AuthKeyCreation {
                 if (!Arrays.equals(result.newNonceHash, newNonceHash))
                     throw SecurityException()
 
-                val serverSalt = StreamUtils.readLong(xor(substring(newNonce, 0, 8), substring(resPQ.serverNonce, 0, 8)), 0)
+                val serverSalt =
+                    StreamUtils.readLong(xor(substring(newNonce, 0, 8), substring(resPQ.serverNonce, 0, 8)), 0)
 
                 return Pair(authKey, serverSalt)
             } else if (result is DhGenRetry) {
@@ -221,7 +270,10 @@ object AuthKeyCreation {
     /** For details about the protocol, see https://core.telegram.org/mtproto/auth_key  */
     @Throws(IOException::class, FingerprintNotFoundException::class)
     private fun createKey(tmpKey: Boolean): AuthResult {
-        logger.debug(connection!!.marker, "Attempting to create a " + (if (tmpKey) "temporary " else "permanent") + " Authorization Key")
+        logger.debug(
+            connection!!.marker,
+            "Attempting to create a " + (if (tmpKey) "temporary " else "permanent") + " Authorization Key"
+        )
 
         // Step 1
         val nonce = RandomUtils.randomInt128() // int128
@@ -272,7 +324,10 @@ object AuthKeyCreation {
         val authKey = if (!tmpKey)
             AuthKey(keySaltPair.first)
         else
-            TempAuthKey(keySaltPair.first, TimeOverlord.getServerTime(connection!!.dataCenter).toInt() + tmpKeyExpireDelay)
+            TempAuthKey(
+                keySaltPair.first,
+                TimeOverlord.getServerTime(connection!!.dataCenter).toInt() + tmpKeyExpireDelay
+            )
         return AuthResult(authKey, keySaltPair.second, connection!!)
     }
 }

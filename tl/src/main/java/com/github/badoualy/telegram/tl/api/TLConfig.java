@@ -3,7 +3,6 @@ package com.github.badoualy.telegram.tl.api;
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -26,72 +25,39 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLConfig extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xcb601684;
-
-    protected int flags;
-
-    protected boolean phonecallsEnabled;
-
-    protected int date;
-
-    protected int expires;
-
-    protected boolean testMode;
-
-    protected int thisDc;
-
-    protected TLVector<TLDcOption> dcOptions;
-
-    protected int chatSizeMax;
-
-    protected int megagroupSizeMax;
-
-    protected int forwardedCountMax;
-
-    protected int onlineUpdatePeriodMs;
-
-    protected int offlineBlurTimeoutMs;
-
-    protected int offlineIdleTimeoutMs;
-
-    protected int onlineCloudTimeoutMs;
-
-    protected int notifyCloudDelayMs;
-
-    protected int notifyDefaultDelayMs;
-
-    protected int chatBigSize;
-
-    protected int pushChatPeriodMs;
-
-    protected int pushChatLimit;
-
-    protected int savedGifsLimit;
-
-    protected int editTimeLimit;
-
-    protected int ratingEDecay;
-
-    protected int stickersRecentLimit;
-
-    protected Integer tmpSessions;
-
-    protected int pinnedDialogsCountMax;
-
-    protected int callReceiveTimeoutMs;
-
-    protected int callRingTimeoutMs;
-
-    protected int callConnectTimeoutMs;
-
-    protected int callPacketTimeoutMs;
-
-    protected String meUrlPrefix;
-
-    protected TLVector<TLDisabledFeature> disabledFeatures;
-
     private final String _constructor = "config#cb601684";
+    protected int flags;
+    protected boolean phonecallsEnabled;
+    protected int date;
+    protected int expires;
+    protected boolean testMode;
+    protected int thisDc;
+    protected TLVector<TLDcOption> dcOptions;
+    protected int chatSizeMax;
+    protected int megagroupSizeMax;
+    protected int forwardedCountMax;
+    protected int onlineUpdatePeriodMs;
+    protected int offlineBlurTimeoutMs;
+    protected int offlineIdleTimeoutMs;
+    protected int onlineCloudTimeoutMs;
+    protected int notifyCloudDelayMs;
+    protected int notifyDefaultDelayMs;
+    protected int chatBigSize;
+    protected int pushChatPeriodMs;
+    protected int pushChatLimit;
+    protected int savedGifsLimit;
+    protected int editTimeLimit;
+    protected int ratingEDecay;
+    protected int stickersRecentLimit;
+    protected Integer tmpSessions;
+    protected int pinnedDialogsCountMax;
+    protected int callReceiveTimeoutMs;
+    protected int callRingTimeoutMs;
+    protected int callConnectTimeoutMs;
+    protected int callPacketTimeoutMs;
+    protected String meUrlPrefix;
+    protected TLVector<TLDisabledFeature> disabledFeatures;
 
     public TLConfig() {
     }

@@ -1,36 +1,42 @@
 package com.github.badoualy.telegram.mtproto.rx
 
+import java.util.*
+import java.util.concurrent.TimeUnit
 import rx.Observable
 import rx.Scheduler
 import rx.Subscriber
 import rx.observers.SerializedSubscriber
 import rx.subscriptions.SerialSubscription
 import rx.subscriptions.Subscriptions
-import java.util.*
-import java.util.concurrent.TimeUnit
 
 /**
  * Add a timeout feature to an observable, starting when <b>the first item was added</b>. The existing timeout() just flush the buffer if no
  * elements are added in a given amount of time.
  */
-class OperatorBufferTimeout<T>(val timeout: Long, val unit: TimeUnit,
-                               val scheduler: Scheduler, val maxSize: Int,
-                               val shouldFlush: (T) -> Boolean = { true },
-                               val shouldAdd: (T) -> Boolean = { true }) : Observable.Operator<List<T>, T> {
+class OperatorBufferTimeout<T>(
+    val timeout: Long, val unit: TimeUnit,
+    val scheduler: Scheduler, val maxSize: Int,
+    val shouldFlush: (T) -> Boolean = { true },
+    val shouldAdd: (T) -> Boolean = { true }
+) : Observable.Operator<List<T>, T> {
 
     override fun call(t: Subscriber<in List<T>>): Subscriber<in T> {
-        val parent = BufferSubscriber(SerializedSubscriber(t),
-                                      timeout, unit,
-                                      scheduler.createWorker(), maxSize, shouldFlush, shouldAdd)
+        val parent = BufferSubscriber(
+            SerializedSubscriber(t),
+            timeout, unit,
+            scheduler.createWorker(), maxSize, shouldFlush, shouldAdd
+        )
         t.add(parent)
         return parent
     }
 
-    private class BufferSubscriber<T>(val actual: Subscriber<in List<T>>,
-                                      val timeout: Long, val unit: TimeUnit,
-                                      val w: Scheduler.Worker, val maxSize: Int,
-                                      val shouldFlush: (T) -> Boolean = { true },
-                                      val shouldAdd: (T) -> Boolean = { true }) : Subscriber<T>() {
+    private class BufferSubscriber<T>(
+        val actual: Subscriber<in List<T>>,
+        val timeout: Long, val unit: TimeUnit,
+        val w: Scheduler.Worker, val maxSize: Int,
+        val shouldFlush: (T) -> Boolean = { true },
+        val shouldAdd: (T) -> Boolean = { true }
+    ) : Subscriber<T>() {
 
         val timer: SerialSubscription
         var buffer: MutableList<T>

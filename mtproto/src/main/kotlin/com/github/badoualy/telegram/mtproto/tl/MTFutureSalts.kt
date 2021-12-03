@@ -1,6 +1,9 @@
 package com.github.badoualy.telegram.mtproto.tl
 
-import com.github.badoualy.telegram.tl.StreamUtils.*
+import com.github.badoualy.telegram.tl.StreamUtils.readInt
+import com.github.badoualy.telegram.tl.StreamUtils.readLong
+import com.github.badoualy.telegram.tl.StreamUtils.writeInt
+import com.github.badoualy.telegram.tl.StreamUtils.writeLong
 import com.github.badoualy.telegram.tl.TLContext
 import com.github.badoualy.telegram.tl.core.TLObject
 import com.github.badoualy.telegram.tl.core.TLVector
@@ -8,7 +11,11 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-class MTFutureSalts @JvmOverloads constructor(var requestId: Long = 0, var now: Int = 0, var salts: TLVector<MTFutureSalt> = TLVector()) : TLObject() {
+class MTFutureSalts @JvmOverloads constructor(
+    var requestId: Long = 0,
+    var now: Int = 0,
+    var salts: TLVector<MTFutureSalt> = TLVector()
+) : TLObject() {
 
     override fun getConstructorId(): Int {
         return CONSTRUCTOR_ID

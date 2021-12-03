@@ -8,7 +8,6 @@ import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLStringVector;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,6 +17,8 @@ import java.nio.charset.Charset;
  * Helper class for writing and reading data for tl (de-)serialization.
  */
 public final class StreamUtils {
+
+    private static final char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     private StreamUtils() {
 
@@ -184,6 +185,7 @@ public final class StreamUtils {
 
         return a + (b << 32);
     }
+
     public static double readDouble(InputStream stream) throws IOException {
         return Double.longBitsToDouble(readLong(stream));
     }
@@ -300,20 +302,20 @@ public final class StreamUtils {
 
     public static byte[] intToBytes(int value) {
         return new byte[]{(byte) (value & 0xFF),
-                          (byte) ((value >> 8) & 0xFF),
-                          (byte) ((value >> 16) & 0xFF),
-                          (byte) ((value >> 24) & 0xFF)};
+                (byte) ((value >> 8) & 0xFF),
+                (byte) ((value >> 16) & 0xFF),
+                (byte) ((value >> 24) & 0xFF)};
     }
 
     public static byte[] longToBytes(long value) {
         return new byte[]{(byte) (value & 0xFF),
-                          (byte) ((value >> 8) & 0xFF),
-                          (byte) ((value >> 16) & 0xFF),
-                          (byte) ((value >> 24) & 0xFF),
-                          (byte) ((value >> 32) & 0xFF),
-                          (byte) ((value >> 40) & 0xFF),
-                          (byte) ((value >> 48) & 0xFF),
-                          (byte) ((value >> 56) & 0xFF)};
+                (byte) ((value >> 8) & 0xFF),
+                (byte) ((value >> 16) & 0xFF),
+                (byte) ((value >> 24) & 0xFF),
+                (byte) ((value >> 32) & 0xFF),
+                (byte) ((value >> 40) & 0xFF),
+                (byte) ((value >> 48) & 0xFF),
+                (byte) ((value >> 56) & 0xFF)};
     }
 
     public static int readInt(byte[] src) {
@@ -349,8 +351,6 @@ public final class StreamUtils {
 
         return (a & 0xFFFFFFFF) + ((b & 0xFFFFFFFF) << 32);
     }
-
-    private static final char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     public static String toHexString(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];

@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,24 +26,15 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPageBlockEmbedPost extends TLAbsPageBlock {
-
     public static final int CONSTRUCTOR_ID = 0x292c7be9;
-
-    protected String url;
-
-    protected long webpageId;
-
-    protected long authorPhotoId;
-
-    protected String author;
-
-    protected int date;
-
-    protected TLVector<TLAbsPageBlock> blocks;
-
-    protected TLAbsRichText caption;
-
     private final String _constructor = "pageBlockEmbedPost#292c7be9";
+    protected String url;
+    protected long webpageId;
+    protected long authorPhotoId;
+    protected String author;
+    protected int date;
+    protected TLVector<TLAbsPageBlock> blocks;
+    protected TLAbsRichText caption;
 
     public TLPageBlockEmbedPost() {
     }

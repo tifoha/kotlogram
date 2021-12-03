@@ -6,10 +6,10 @@ import com.github.badoualy.telegram.mtproto.model.DataCenter
 import com.github.badoualy.telegram.mtproto.model.MTSession
 import com.github.badoualy.telegram.sample.config.Config.AUTH_KEY_FILE
 import com.github.badoualy.telegram.sample.config.Config.NEAREST_DC_FILE
-import org.apache.commons.io.FileUtils
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
+import org.apache.commons.io.FileUtils
 
 class FileApiStorage : TelegramApiStorage {
 

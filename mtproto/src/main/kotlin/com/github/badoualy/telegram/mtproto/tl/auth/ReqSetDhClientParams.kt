@@ -1,6 +1,9 @@
 package com.github.badoualy.telegram.mtproto.tl.auth
 
-import com.github.badoualy.telegram.tl.StreamUtils.*
+import com.github.badoualy.telegram.tl.StreamUtils.readBytes
+import com.github.badoualy.telegram.tl.StreamUtils.readTLBytes
+import com.github.badoualy.telegram.tl.StreamUtils.writeByteArray
+import com.github.badoualy.telegram.tl.StreamUtils.writeTLBytes
 import com.github.badoualy.telegram.tl.TLContext
 import com.github.badoualy.telegram.tl.core.TLMethod
 import com.github.badoualy.telegram.tl.exception.DeserializationException
@@ -8,9 +11,11 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-class ReqSetDhClientParams @JvmOverloads constructor(var nonce: ByteArray = ByteArray(0),
-                                                     var serverNonce: ByteArray = ByteArray(0),
-                                                     var encrypted: ByteArray = ByteArray(0)) : TLMethod<DhGenResult>() {
+class ReqSetDhClientParams @JvmOverloads constructor(
+    var nonce: ByteArray = ByteArray(0),
+    var serverNonce: ByteArray = ByteArray(0),
+    var encrypted: ByteArray = ByteArray(0)
+) : TLMethod<DhGenResult>() {
 
     override fun getConstructorId(): Int {
         return CONSTRUCTOR_ID
@@ -32,7 +37,8 @@ class ReqSetDhClientParams @JvmOverloads constructor(var nonce: ByteArray = Byte
 
     @Throws(IOException::class)
     override fun deserializeResponse(stream: InputStream, context: TLContext): DhGenResult {
-        val response = context.deserializeMessage(stream) ?: throw DeserializationException("Unable to deserialize response")
+        val response =
+            context.deserializeMessage(stream) ?: throw DeserializationException("Unable to deserialize response")
         if (response !is DhGenResult) {
             throw DeserializationException("Response has incorrect type")
         }

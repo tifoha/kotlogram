@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,14 +15,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLChannelParticipantSelf extends TLAbsChannelParticipant {
-
     public static final int CONSTRUCTOR_ID = 0xa3289a6d;
-
-    protected int inviterId;
-
-    protected int date;
-
     private final String _constructor = "channelParticipantSelf#a3289a6d";
+    protected int inviterId;
+    protected int date;
 
     public TLChannelParticipantSelf() {
     }

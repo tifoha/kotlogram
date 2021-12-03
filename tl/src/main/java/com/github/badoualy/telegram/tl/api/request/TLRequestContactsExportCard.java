@@ -3,7 +3,6 @@ package com.github.badoualy.telegram.tl.api.request;
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLIntVector;
 import com.github.badoualy.telegram.tl.core.TLMethod;
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -14,7 +13,6 @@ import static com.github.badoualy.telegram.tl.StreamUtils.readTLIntVector;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestContactsExportCard extends TLMethod<TLIntVector> {
-
     public static final int CONSTRUCTOR_ID = 0x84e53737;
 
     private final String _constructor = "contacts.exportCard#84e53737";

@@ -15,9 +15,9 @@ task fatJar(type: Jar) {
     description = "Generate a jar including all dependencies"
     manifest {
         attributes("Application-Name": "Kotlogram API",
-                   "Specification-Title": "Kotlogram API",
-                   "Implementation-Title": "com.github.badoualy.telegram.api",
-                   "Implementation-Version": version)
+                "Specification-Title": "Kotlogram API",
+                "Implementation-Title": "com.github.badoualy.telegram.api",
+                "Implementation-Version": version)
     }
     baseName = "kotlogram-$project.name"
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }

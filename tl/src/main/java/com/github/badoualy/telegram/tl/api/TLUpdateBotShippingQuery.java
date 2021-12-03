@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLBytes;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,18 +24,12 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLBytesSerial
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUpdateBotShippingQuery extends TLAbsUpdate {
-
     public static final int CONSTRUCTOR_ID = 0xe0cdc940;
-
-    protected long queryId;
-
-    protected int userId;
-
-    protected TLBytes payload;
-
-    protected TLPostAddress shippingAddress;
-
     private final String _constructor = "updateBotShippingQuery#e0cdc940";
+    protected long queryId;
+    protected int userId;
+    protected TLBytes payload;
+    protected TLPostAddress shippingAddress;
 
     public TLUpdateBotShippingQuery() {
     }

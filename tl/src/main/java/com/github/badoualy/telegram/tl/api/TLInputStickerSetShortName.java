@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,12 +15,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLInputStickerSetShortName extends TLAbsInputStickerSet {
-
     public static final int CONSTRUCTOR_ID = 0x861cc8a0;
-
-    protected String shortName;
-
     private final String _constructor = "inputStickerSetShortName#861cc8a0";
+    protected String shortName;
 
     public TLInputStickerSetShortName() {
     }

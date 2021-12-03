@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,14 +18,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLChatParticipants extends TLAbsChatParticipants {
-
     public static final int CONSTRUCTOR_ID = 0x3f460fed;
-
-    protected TLVector<TLAbsChatParticipant> participants;
-
-    protected int version;
-
     private final String _constructor = "chatParticipants#3f460fed";
+    protected TLVector<TLAbsChatParticipant> participants;
+    protected int version;
 
     public TLChatParticipants() {
     }

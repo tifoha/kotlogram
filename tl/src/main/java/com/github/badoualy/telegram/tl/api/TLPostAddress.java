@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -17,22 +16,14 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPostAddress extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x1e8caaeb;
-
-    protected String streetLine1;
-
-    protected String streetLine2;
-
-    protected String city;
-
-    protected String state;
-
-    protected String countryIso2;
-
-    protected String postCode;
-
     private final String _constructor = "postAddress#1e8caaeb";
+    protected String streetLine1;
+    protected String streetLine2;
+    protected String city;
+    protected String state;
+    protected String countryIso2;
+    protected String postCode;
 
     public TLPostAddress() {
     }

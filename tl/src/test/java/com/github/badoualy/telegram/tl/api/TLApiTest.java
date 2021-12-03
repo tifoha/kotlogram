@@ -2,14 +2,12 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.api.utils.DumpUtils;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import org.testng.Assert;
 import org.testng.ITest;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
-
-import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
 
 /**
  * Unit test to generate random TLObject for each type, and serialize then deserialize it and check if still equals.
@@ -38,9 +36,9 @@ public final class TLApiTest extends AbsTLApiTest implements ITest {
         ByteArrayInputStream is = new ByteArrayInputStream(bytes);
         deserializedObject.deserialize(is, TLApiTestContext.getInstance());
         Assert.assertEquals(is.available(), 0,
-                            "Deserialization did not consume whole payload of " + bytes.length + " bytes");
+                "Deserialization did not consume whole payload of " + bytes.length + " bytes");
         Assert.assertEquals(DumpUtils.toJson(deserializedObject), DumpUtils.toJson(object),
-                            "Deserialization of serialized object returned an object non-equals");
+                "Deserialization of serialized object returned an object non-equals");
 
         //DumpUtils.dump(object, bytes);
     }

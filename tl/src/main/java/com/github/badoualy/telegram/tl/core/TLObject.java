@@ -3,7 +3,6 @@ package com.github.badoualy.telegram.tl.core;
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.TLObjectUtils;
 import com.github.badoualy.telegram.tl.exception.InvalidConstructorIdException;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -100,7 +99,7 @@ public abstract class TLObject implements Serializable {
      * Throw an exception to notify that the field trying to be serialized is null
      *
      * @param fieldName name of the field trying to be serialized
-     * @param flags flags field current value
+     * @param flags     flags field current value
      * @throws NullPointerException
      */
     protected final void throwNullFieldException(String fieldName, int flags) throws NullPointerException {

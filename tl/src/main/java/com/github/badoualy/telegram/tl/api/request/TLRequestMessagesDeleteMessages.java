@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.messages.TLAffectedMessages;
 import com.github.badoualy.telegram.tl.core.TLIntVector;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,16 +22,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesDeleteMessages extends TLMethod<TLAffectedMessages> {
-
     public static final int CONSTRUCTOR_ID = 0xe58e95d2;
-
-    protected int flags;
-
-    protected boolean revoke;
-
-    protected TLIntVector id;
-
     private final String _constructor = "messages.deleteMessages#e58e95d2";
+    protected int flags;
+    protected boolean revoke;
+    protected TLIntVector id;
 
     public TLRequestMessagesDeleteMessages() {
     }
@@ -50,9 +44,7 @@ public class TLRequestMessagesDeleteMessages extends TLMethod<TLAffectedMessages
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAffectedMessages)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAffectedMessages) response;
     }

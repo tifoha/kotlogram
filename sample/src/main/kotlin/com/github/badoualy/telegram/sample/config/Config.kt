@@ -13,30 +13,46 @@ object Config {
     val NEAREST_DC_FILE = File(ROOT_DIR, "dc.save")
 
     private val properties = Properties().apply {
-        load(FileInputStream(File(ROOT_DIR,
-                                  CONFIG_FILE)))
+        load(
+            FileInputStream(
+                File(
+                    ROOT_DIR,
+                    CONFIG_FILE
+                )
+            )
+        )
     }
 
     val apiId = getProp("apiId", "0").toIntOrNull() ?: 0
     val apiHash = getProp("apiHash", "")
 
-    val deviceModel = getProp("deviceModel",
-                              "DeviceModel")
-    val systemVersion = getProp("systemVersion",
-                                "SysVer")
-    val appVersion = getProp("appVersion",
-                             "AppVersion")
+    val deviceModel = getProp(
+        "deviceModel",
+        "DeviceModel"
+    )
+    val systemVersion = getProp(
+        "systemVersion",
+        "SysVer"
+    )
+    val appVersion = getProp(
+        "appVersion",
+        "AppVersion"
+    )
     val langCode = getProp("langCode", "en")
 
-    val phoneNumber = getProp("phoneNumber",
-                              "+33000000000")
+    val phoneNumber = getProp(
+        "phoneNumber",
+        "+33000000000"
+    )
 
-    val application = TelegramApp(apiId,
-                                  apiHash,
-                                  deviceModel,
-                                  systemVersion,
-                                  appVersion,
-                                  langCode)
+    val application = TelegramApp(
+        apiId,
+        apiHash,
+        deviceModel,
+        systemVersion,
+        appVersion,
+        langCode
+    )
 
     init {
         println("Application config: ${application}")

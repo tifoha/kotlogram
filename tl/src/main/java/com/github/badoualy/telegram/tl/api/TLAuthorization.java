@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,36 +22,21 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLAuthorization extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x7bf2e6f6;
-
-    protected long hash;
-
-    protected int flags;
-
-    protected String deviceModel;
-
-    protected String platform;
-
-    protected String systemVersion;
-
-    protected int apiId;
-
-    protected String appName;
-
-    protected String appVersion;
-
-    protected int dateCreated;
-
-    protected int dateActive;
-
-    protected String ip;
-
-    protected String country;
-
-    protected String region;
-
     private final String _constructor = "authorization#7bf2e6f6";
+    protected long hash;
+    protected int flags;
+    protected String deviceModel;
+    protected String platform;
+    protected String systemVersion;
+    protected int apiId;
+    protected String appName;
+    protected String appVersion;
+    protected int dateCreated;
+    protected int dateActive;
+    protected String ip;
+    protected String country;
+    protected String region;
 
     public TLAuthorization() {
     }

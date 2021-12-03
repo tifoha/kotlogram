@@ -1,11 +1,22 @@
 package com.github.badoualy.telegram.mtproto.secure
 
 import com.github.badoualy.telegram.mtproto.auth.AuthKey
-import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.*
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.AES256IGEDecryptBig
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.AES256IGEEncrypt
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.SHA1
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.align
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.concat
+import com.github.badoualy.telegram.mtproto.secure.CryptoUtils.substring
 import com.github.badoualy.telegram.mtproto.tl.MTMessage
 import com.github.badoualy.telegram.mtproto.util.AesKeyIvPair
 import com.github.badoualy.telegram.tl.StreamUtils
-import com.github.badoualy.telegram.tl.StreamUtils.*
+import com.github.badoualy.telegram.tl.StreamUtils.intToBytes
+import com.github.badoualy.telegram.tl.StreamUtils.longToBytes
+import com.github.badoualy.telegram.tl.StreamUtils.readBytes
+import com.github.badoualy.telegram.tl.StreamUtils.readLong
+import com.github.badoualy.telegram.tl.StreamUtils.writeByteArray
+import com.github.badoualy.telegram.tl.StreamUtils.writeInt
+import com.github.badoualy.telegram.tl.StreamUtils.writeLong
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -27,7 +38,8 @@ class MTProtoMessageEncryption {
          * @return message key
          * @see [Message Key](https://core.telegram.org/mtproto/description.message-key)
          */
-        @JvmStatic fun generateMsgKey(unencryptedData: ByteArray) = substring(SHA1(unencryptedData), 4, 16)
+        @JvmStatic
+        fun generateMsgKey(unencryptedData: ByteArray) = substring(SHA1(unencryptedData), 4, 16)
 
 
         /**
@@ -38,7 +50,8 @@ class MTProtoMessageEncryption {
          * @return The lower-order 128 bits of the SHA1 hash of the part of the message to be encrypted
          * @see [Message Key](https://core.telegram.org/mtproto/description.message-key)
          */
-        @JvmStatic fun generateMsgKey(serverSalt: ByteArray, sessionId: ByteArray, message: MTMessage): ByteArray? {
+        @JvmStatic
+        fun generateMsgKey(serverSalt: ByteArray, sessionId: ByteArray, message: MTMessage): ByteArray? {
             try {
                 val crypt = MessageDigest.getInstance("SHA-1")
                 crypt.reset()
@@ -136,13 +149,24 @@ class MTProtoMessageEncryption {
             val msgId = readLong(unencryptedStream)
             val seqNo = StreamUtils.readInt(unencryptedStream)
             val msgLength = StreamUtils.readInt(unencryptedStream)
-            val paddingSize = encryptedDataLength - 32 - msgLength // serverSalt(8) + sessionId(8) + messageId(8) + seqNo(4) + msgLen(4)
+            val paddingSize =
+                encryptedDataLength - 32 - msgLength // serverSalt(8) + sessionId(8) + messageId(8) + seqNo(4) + msgLen(4)
 
             // Security checks
             if (msgId % 2 == 0L) throw SecurityException("Message id of messages sent be the server must be odd, found $msgId")
             if (msgLength % 4 != 0) throw SecurityException("Message length must be a multiple of 4, found $msgLength")
             if (paddingSize > 15 || paddingSize < 0) throw SecurityException("Padding must be between 0 and 15 included, found $paddingSize")
-            if (!Arrays.equals(session, sessionId)) throw SecurityException("The message was not intended for this session, expected ${BigInteger(sessionId).toLong()}, found ${BigInteger(session).toLong()}")
+            if (!Arrays.equals(
+                    session,
+                    sessionId
+                )
+            ) throw SecurityException(
+                "The message was not intended for this session, expected ${BigInteger(sessionId).toLong()}, found ${
+                    BigInteger(
+                        session
+                    ).toLong()
+                }"
+            )
 
             // Read message
             val message = ByteArray(msgLength)
@@ -167,12 +191,18 @@ class MTProtoMessageEncryption {
         @JvmStatic
         private fun computeAESKeyAndInitVector(authKey: AuthKey, msgKey: ByteArray, x: Int): AesKeyIvPair {
             val sha1_a = CryptoUtils.SHA1(msgKey, substring(authKey.key, x, 32))
-            val sha1_b = CryptoUtils.SHA1(substring(authKey.key, 32 + x, 16), msgKey, substring(authKey.key, 48 + x, 16))
+            val sha1_b =
+                CryptoUtils.SHA1(substring(authKey.key, 32 + x, 16), msgKey, substring(authKey.key, 48 + x, 16))
             val sha1_c = CryptoUtils.SHA1(substring(authKey.key, 64 + x, 32), msgKey)
             val sha1_d = CryptoUtils.SHA1(msgKey, substring(authKey.key, 96 + x, 32))
 
             val aesKey = concat(substring(sha1_a, 0, 8), substring(sha1_b, 8, 12), substring(sha1_c, 4, 12))
-            val aesIv = concat(substring(sha1_a, 8, 12), substring(sha1_b, 0, 8), substring(sha1_c, 16, 4), substring(sha1_d, 0, 8))
+            val aesIv = concat(
+                substring(sha1_a, 8, 12),
+                substring(sha1_b, 0, 8),
+                substring(sha1_c, 16, 4),
+                substring(sha1_d, 0, 8)
+            )
 
             return AesKeyIvPair(aesKey, aesIv)
         }

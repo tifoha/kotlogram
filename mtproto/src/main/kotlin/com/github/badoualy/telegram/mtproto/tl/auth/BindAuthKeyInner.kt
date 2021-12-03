@@ -1,6 +1,9 @@
 package com.github.badoualy.telegram.mtproto.tl.auth
 
-import com.github.badoualy.telegram.tl.StreamUtils.*
+import com.github.badoualy.telegram.tl.StreamUtils.readInt
+import com.github.badoualy.telegram.tl.StreamUtils.readLong
+import com.github.badoualy.telegram.tl.StreamUtils.writeInt
+import com.github.badoualy.telegram.tl.StreamUtils.writeLong
 import com.github.badoualy.telegram.tl.TLContext
 import com.github.badoualy.telegram.tl.core.TLObject
 import java.io.IOException
@@ -8,14 +11,20 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.math.BigInteger
 
-class BindAuthKeyInner @JvmOverloads constructor(var nonce: Long = 0,
-                                                 var tempAuthKeyId: Long = 0, var permAuthKeyId: Long = 0,
-                                                 var tempSessionId: Long = 0, var expiresAt: Int = 0) : TLObject() {
+class BindAuthKeyInner @JvmOverloads constructor(
+    var nonce: Long = 0,
+    var tempAuthKeyId: Long = 0, var permAuthKeyId: Long = 0,
+    var tempSessionId: Long = 0, var expiresAt: Int = 0
+) : TLObject() {
 
-    constructor(nonce: Long, tempAuthKeyId: Long, permAuthKeyId: Long,
-                tempSessionId: ByteArray, expiresAt: Int) : this(nonce,
-                                                                 tempAuthKeyId, permAuthKeyId,
-                                                                 BigInteger(tempSessionId).toLong(), expiresAt)
+    constructor(
+        nonce: Long, tempAuthKeyId: Long, permAuthKeyId: Long,
+        tempSessionId: ByteArray, expiresAt: Int
+    ) : this(
+        nonce,
+        tempAuthKeyId, permAuthKeyId,
+        BigInteger(tempSessionId).toLong(), expiresAt
+    )
 
     override fun getConstructorId(): Int {
         return CONSTRUCTOR_ID

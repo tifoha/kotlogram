@@ -15,7 +15,6 @@ import com.github.badoualy.telegram.tl.core.TLVector;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public abstract class TLAbsChats extends TLObject {
-
     protected TLVector<TLAbsChat> chats;
 
     public TLAbsChats() {

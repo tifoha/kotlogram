@@ -1,6 +1,11 @@
 package com.github.badoualy.telegram.mtproto.tl.auth
 
-import com.github.badoualy.telegram.tl.StreamUtils.*
+import com.github.badoualy.telegram.tl.StreamUtils.readBytes
+import com.github.badoualy.telegram.tl.StreamUtils.readTLBytes
+import com.github.badoualy.telegram.tl.StreamUtils.readTLLongVector
+import com.github.badoualy.telegram.tl.StreamUtils.writeByteArray
+import com.github.badoualy.telegram.tl.StreamUtils.writeTLBytes
+import com.github.badoualy.telegram.tl.StreamUtils.writeTLVector
 import com.github.badoualy.telegram.tl.TLContext
 import com.github.badoualy.telegram.tl.core.TLLongVector
 import com.github.badoualy.telegram.tl.core.TLObject
@@ -8,10 +13,12 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-class ResPQ @JvmOverloads constructor(var nonce: ByteArray = ByteArray(0),
-                                      var serverNonce: ByteArray = ByteArray(0),
-                                      var pq: ByteArray = ByteArray(0),
-                                      var fingerprints: TLLongVector = TLLongVector()) : TLObject() {
+class ResPQ @JvmOverloads constructor(
+    var nonce: ByteArray = ByteArray(0),
+    var serverNonce: ByteArray = ByteArray(0),
+    var pq: ByteArray = ByteArray(0),
+    var fingerprints: TLLongVector = TLLongVector()
+) : TLObject() {
 
     override fun getConstructorId(): Int {
         return CONSTRUCTOR_ID

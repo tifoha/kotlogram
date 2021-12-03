@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,20 +20,13 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLDocumentAttributeSticker extends TLAbsDocumentAttribute {
-
     public static final int CONSTRUCTOR_ID = 0x6319d612;
-
-    protected int flags;
-
-    protected boolean mask;
-
-    protected String alt;
-
-    protected TLAbsInputStickerSet stickerset;
-
-    protected TLMaskCoords maskCoords;
-
     private final String _constructor = "documentAttributeSticker#6319d612";
+    protected int flags;
+    protected boolean mask;
+    protected String alt;
+    protected TLAbsInputStickerSet stickerset;
+    protected TLMaskCoords maskCoords;
 
     public TLDocumentAttributeSticker() {
     }
@@ -72,8 +64,7 @@ public class TLDocumentAttributeSticker extends TLAbsDocumentAttribute {
         mask = (flags & 2) != 0;
         alt = readTLString(stream);
         stickerset = readTLObject(stream, context, TLAbsInputStickerSet.class, -1);
-        maskCoords = (flags & 1) != 0 ? readTLObject(stream, context, TLMaskCoords.class,
-                                                     TLMaskCoords.CONSTRUCTOR_ID) : null;
+        maskCoords = (flags & 1) != 0 ? readTLObject(stream, context, TLMaskCoords.class, TLMaskCoords.CONSTRUCTOR_ID) : null;
     }
 
     @Override

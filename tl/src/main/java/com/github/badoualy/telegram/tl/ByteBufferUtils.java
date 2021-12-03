@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl;
 
 import com.github.badoualy.telegram.tl.core.TLBytes;
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

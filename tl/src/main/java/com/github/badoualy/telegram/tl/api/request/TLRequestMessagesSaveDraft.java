@@ -7,7 +7,6 @@ import com.github.badoualy.telegram.tl.core.TLBool;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -29,22 +28,14 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesSaveDraft extends TLMethod<TLBool> {
-
     public static final int CONSTRUCTOR_ID = 0xbc39e14b;
-
-    protected int flags;
-
-    protected boolean noWebpage;
-
-    protected Integer replyToMsgId;
-
-    protected TLAbsInputPeer peer;
-
-    protected String message;
-
-    protected TLVector<TLAbsMessageEntity> entities;
-
     private final String _constructor = "messages.saveDraft#bc39e14b";
+    protected int flags;
+    protected boolean noWebpage;
+    protected Integer replyToMsgId;
+    protected TLAbsInputPeer peer;
+    protected String message;
+    protected TLVector<TLAbsMessageEntity> entities;
 
     public TLRequestMessagesSaveDraft() {
     }
@@ -65,9 +56,7 @@ public class TLRequestMessagesSaveDraft extends TLMethod<TLBool> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLBool)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLBool) response;
     }

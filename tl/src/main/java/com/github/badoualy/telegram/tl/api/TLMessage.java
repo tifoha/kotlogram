@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLVector;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,46 +23,26 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLMessage extends TLAbsMessage {
-
     public static final int CONSTRUCTOR_ID = 0xc09be45f;
-
-    protected int flags;
-
-    protected boolean out;
-
-    protected boolean mentioned;
-
-    protected boolean mediaUnread;
-
-    protected boolean silent;
-
-    protected boolean post;
-
-    protected Integer fromId;
-
-    protected TLAbsPeer toId;
-
-    protected TLMessageFwdHeader fwdFrom;
-
-    protected Integer viaBotId;
-
-    protected Integer replyToMsgId;
-
-    protected int date;
-
-    protected String message;
-
-    protected TLAbsMessageMedia media;
-
-    protected TLAbsReplyMarkup replyMarkup;
-
-    protected TLVector<TLAbsMessageEntity> entities;
-
-    protected Integer views;
-
-    protected Integer editDate;
-
     private final String _constructor = "message#c09be45f";
+    protected int flags;
+    protected boolean out;
+    protected boolean mentioned;
+    protected boolean mediaUnread;
+    protected boolean silent;
+    protected boolean post;
+    protected Integer fromId;
+    protected TLAbsPeer toId;
+    protected TLMessageFwdHeader fwdFrom;
+    protected Integer viaBotId;
+    protected Integer replyToMsgId;
+    protected int date;
+    protected String message;
+    protected TLAbsMessageMedia media;
+    protected TLAbsReplyMarkup replyMarkup;
+    protected TLVector<TLAbsMessageEntity> entities;
+    protected Integer views;
+    protected Integer editDate;
 
     public TLMessage() {
     }
@@ -166,8 +145,7 @@ public class TLMessage extends TLAbsMessage {
         id = readInt(stream);
         fromId = (flags & 256) != 0 ? readInt(stream) : null;
         toId = readTLObject(stream, context, TLAbsPeer.class, -1);
-        fwdFrom = (flags & 4) != 0 ? readTLObject(stream, context, TLMessageFwdHeader.class,
-                                                  TLMessageFwdHeader.CONSTRUCTOR_ID) : null;
+        fwdFrom = (flags & 4) != 0 ? readTLObject(stream, context, TLMessageFwdHeader.class, TLMessageFwdHeader.CONSTRUCTOR_ID) : null;
         viaBotId = (flags & 2048) != 0 ? readInt(stream) : null;
         replyToMsgId = (flags & 8) != 0 ? readInt(stream) : null;
         date = readInt(stream);

@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLPaymentRequestedInfo;
 import com.github.badoualy.telegram.tl.api.payments.TLValidatedRequestedInfo;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -22,18 +21,12 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT32;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestPaymentsValidateRequestedInfo extends TLMethod<TLValidatedRequestedInfo> {
-
     public static final int CONSTRUCTOR_ID = 0x770a8e74;
-
-    protected int flags;
-
-    protected boolean save;
-
-    protected int msgId;
-
-    protected TLPaymentRequestedInfo info;
-
     private final String _constructor = "payments.validateRequestedInfo#770a8e74";
+    protected int flags;
+    protected boolean save;
+    protected int msgId;
+    protected TLPaymentRequestedInfo info;
 
     public TLRequestPaymentsValidateRequestedInfo() {
     }
@@ -52,9 +45,7 @@ public class TLRequestPaymentsValidateRequestedInfo extends TLMethod<TLValidated
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLValidatedRequestedInfo)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLValidatedRequestedInfo) response;
     }

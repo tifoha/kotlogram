@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.mtproto.secure;
 
 import com.github.badoualy.telegram.mtproto.secure.aes.AESImplementation;
 import com.github.badoualy.telegram.mtproto.secure.aes.DefaultAESImplementation;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,17 +15,12 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPublicKeySpec;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 public final class CryptoUtils {
-
-    private CryptoUtils() {
-
-    }
 
     private static final ThreadLocal<MessageDigest> md5 = new ThreadLocal<MessageDigest>() {
         @Override
@@ -40,7 +34,6 @@ public final class CryptoUtils {
             return crypt;
         }
     };
-
     private static final ThreadLocal<MessageDigest> sha1 = new ThreadLocal<MessageDigest>() {
         @Override
         protected MessageDigest initialValue() {
@@ -53,7 +46,6 @@ public final class CryptoUtils {
             return crypt;
         }
     };
-
     private static final ThreadLocal<MessageDigest> sha256 = new ThreadLocal<MessageDigest>() {
         @Override
         protected MessageDigest initialValue() {
@@ -66,8 +58,11 @@ public final class CryptoUtils {
             return crypt;
         }
     };
-
     private static AESImplementation currentImplementation = new DefaultAESImplementation();
+
+    private CryptoUtils() {
+
+    }
 
     public static void setAESImplementation(AESImplementation implementation) {
         currentImplementation = implementation;

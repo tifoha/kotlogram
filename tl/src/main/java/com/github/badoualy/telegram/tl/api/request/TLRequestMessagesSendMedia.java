@@ -7,7 +7,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsReplyMarkup;
 import com.github.badoualy.telegram.tl.api.TLAbsUpdates;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,28 +26,17 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_INT64;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestMessagesSendMedia extends TLMethod<TLAbsUpdates> {
-
     public static final int CONSTRUCTOR_ID = 0xc8f16791;
-
-    protected int flags;
-
-    protected boolean silent;
-
-    protected boolean background;
-
-    protected boolean clearDraft;
-
-    protected TLAbsInputPeer peer;
-
-    protected Integer replyToMsgId;
-
-    protected TLAbsInputMedia media;
-
-    protected long randomId;
-
-    protected TLAbsReplyMarkup replyMarkup;
-
     private final String _constructor = "messages.sendMedia#c8f16791";
+    protected int flags;
+    protected boolean silent;
+    protected boolean background;
+    protected boolean clearDraft;
+    protected TLAbsInputPeer peer;
+    protected Integer replyToMsgId;
+    protected TLAbsInputMedia media;
+    protected long randomId;
+    protected TLAbsReplyMarkup replyMarkup;
 
     public TLRequestMessagesSendMedia() {
     }
@@ -72,9 +60,7 @@ public class TLRequestMessagesSendMedia extends TLMethod<TLAbsUpdates> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAbsUpdates)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAbsUpdates) response;
     }

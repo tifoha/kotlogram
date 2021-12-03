@@ -2,17 +2,18 @@ package com.github.badoualy.telegram
 
 import com.github.badoualy.telegram.tl.api.TLApiContext
 import com.google.gson.GsonBuilder
-import org.apache.commons.codec.DecoderException
-import org.apache.commons.codec.binary.Hex
 import java.io.File
 import java.io.IOException
+import org.apache.commons.codec.DecoderException
+import org.apache.commons.codec.binary.Hex
 
 object DecodeHexDump {
 
     private val gson = GsonBuilder().setPrettyPrinting().serializeNulls().create()
 
     @Throws(IOException::class, DecoderException::class)
-    @JvmStatic fun main(args: Array<String>) {
+    @JvmStatic
+    fun main(args: Array<String>) {
         if (args.size != 1) {
             System.err.println("Usage: java -jar tl-decoder.jar <input>")
             System.exit(-1)

@@ -13,16 +13,7 @@ import com.github.badoualy.telegram.tl.core.TLObject;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public abstract class TLAbsInputPeerNotifyEvents extends TLObject {
-
     public TLAbsInputPeerNotifyEvents() {
-    }
-
-    public abstract boolean isEmpty();
-
-    public abstract boolean isNotEmpty();
-
-    public TLInputPeerNotifyEventsAll getAsInputPeerNotifyEventsAll() {
-        return null;
     }
 
     public static TLInputPeerNotifyEventsEmpty newEmpty() {
@@ -31,5 +22,13 @@ public abstract class TLAbsInputPeerNotifyEvents extends TLObject {
 
     public static TLInputPeerNotifyEventsAll newNotEmpty() {
         return new TLInputPeerNotifyEventsAll();
+    }
+
+    public abstract boolean isEmpty();
+
+    public abstract boolean isNotEmpty();
+
+    public TLInputPeerNotifyEventsAll getAsInputPeerNotifyEventsAll() {
+        return null;
     }
 }

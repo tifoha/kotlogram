@@ -20,9 +20,9 @@ fun buildFromJson(root: JsonNode): TLDefinition {
 
     // First add all constructor types: "Abstract classes"
     constructorsNode
-            .map { c -> c["type"].textValue() }
-            .map { t -> createConstructorType(t) }
-            .forEach { tl -> types.put(tl.name, tl) }
+        .map { c -> c["type"].textValue() }
+        .map { t -> createConstructorType(t) }
+        .forEach { tl -> types.put(tl.name, tl) }
 
     // Build constructors: type classes
     println("Reading constructors...")
@@ -87,11 +87,14 @@ private fun createType(typeName: String, types: Map<String, TLTypeRaw>, isParame
     isParameter && typeName.matches(flagRegex) -> {
         val groups = flagRegex.matchEntire(typeName)?.groups
         val maskName = groups?.get(1)?.value ?: throw RuntimeException(
-                "Unknown error with type $typeName")
+            "Unknown error with type $typeName"
+        )
         val value = groups?.get(2)?.value?.toInt() ?: throw RuntimeException(
-                "Unknown error with type $typeName")
+            "Unknown error with type $typeName"
+        )
         val realType = groups?.get(3)?.value ?: throw RuntimeException(
-                "Unknown error with type $typeName")
+            "Unknown error with type $typeName"
+        )
         if (maskName != "flags") throw RuntimeException("Unsupported flag name, expected `flags`")
 
         TLTypeConditional(value, createType(realType, types))
@@ -99,11 +102,14 @@ private fun createType(typeName: String, types: Map<String, TLTypeRaw>, isParame
     typeName.matches(genericRegex) -> {
         val groups = genericRegex.matchEntire(typeName)?.groups
         val tlName: String = groups?.get(1)?.value ?: throw RuntimeException(
-                "Unknown error with type $typeName")
+            "Unknown error with type $typeName"
+        )
         val genericName: String = groups?.get(2)?.value ?: throw RuntimeException(
-                "Unknown error with type $typeName")
+            "Unknown error with type $typeName"
+        )
         if (!SupportedGenericTypes.contains(tlName)) throw RuntimeException(
-                "Unsupported generic type $tlName")
+            "Unsupported generic type $tlName"
+        )
 
         TLTypeGeneric(tlName, arrayOf(createType(genericName, types)))
     }
@@ -115,5 +121,6 @@ private fun createType(typeName: String, types: Map<String, TLTypeRaw>, isParame
         else throw RuntimeException("Unknown type " + typeName)
     }
     else -> throw RuntimeException(
-            "Unsupported type $typeName for ${if (isParameter) "parameter" else "method"}")
+        "Unsupported type $typeName for ${if (isParameter) "parameter" else "method"}"
+    )
 }

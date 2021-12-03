@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLBytes;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,24 +27,15 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLUpdateInlineBotCallbackQuery extends TLAbsUpdate {
-
     public static final int CONSTRUCTOR_ID = 0xf9d27a5a;
-
-    protected int flags;
-
-    protected long queryId;
-
-    protected int userId;
-
-    protected TLInputBotInlineMessageID msgId;
-
-    protected long chatInstance;
-
-    protected TLBytes data;
-
-    protected String gameShortName;
-
     private final String _constructor = "updateInlineBotCallbackQuery#f9d27a5a";
+    protected int flags;
+    protected long queryId;
+    protected int userId;
+    protected TLInputBotInlineMessageID msgId;
+    protected long chatInstance;
+    protected TLBytes data;
+    protected String gameShortName;
 
     public TLUpdateInlineBotCallbackQuery() {
     }
@@ -90,8 +80,7 @@ public class TLUpdateInlineBotCallbackQuery extends TLAbsUpdate {
         flags = readInt(stream);
         queryId = readLong(stream);
         userId = readInt(stream);
-        msgId = readTLObject(stream, context, TLInputBotInlineMessageID.class,
-                             TLInputBotInlineMessageID.CONSTRUCTOR_ID);
+        msgId = readTLObject(stream, context, TLInputBotInlineMessageID.class, TLInputBotInlineMessageID.CONSTRUCTOR_ID);
         chatInstance = readLong(stream);
         data = (flags & 1) != 0 ? readTLBytes(stream, context) : null;
         gameShortName = (flags & 2) != 0 ? readTLString(stream) : null;

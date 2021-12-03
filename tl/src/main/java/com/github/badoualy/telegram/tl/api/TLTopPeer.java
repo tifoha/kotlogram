@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,14 +18,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_DOUBLE;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLTopPeer extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xedcdc05b;
-
-    protected TLAbsPeer peer;
-
-    protected double rating;
-
     private final String _constructor = "topPeer#edcdc05b";
+    protected TLAbsPeer peer;
+    protected double rating;
 
     public TLTopPeer() {
     }

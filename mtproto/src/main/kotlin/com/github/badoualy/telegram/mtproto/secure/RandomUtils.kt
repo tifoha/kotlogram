@@ -13,27 +13,39 @@ class RandomUtils {
             random.setSeed(System.currentTimeMillis())
         }
 
-        @JvmStatic @Synchronized fun randomByteArray(byteCount: Int): ByteArray {
+        @JvmStatic
+        @Synchronized
+        fun randomByteArray(byteCount: Int): ByteArray {
             val byteArray = ByteArray(byteCount)
             random.nextBytes(byteArray)
             return byteArray
         }
 
-        @JvmStatic @Synchronized fun randomInt() = random.nextInt()
+        @JvmStatic
+        @Synchronized
+        fun randomInt() = random.nextInt()
 
         /**
          * @return a (random) 64-bit byte array
          * @see [MTProto description](https://core.telegram.org/mtproto/description.session)
          */
-        @JvmStatic @Synchronized fun randomSessionId() = randomByteArray(8)
+        @JvmStatic
+        @Synchronized
+        fun randomSessionId() = randomByteArray(8)
 
         /** @return a (random) 64-bit long number */
-        @JvmStatic @Synchronized fun randomLong() = BigInteger(randomByteArray(8)).toLong()
+        @JvmStatic
+        @Synchronized
+        fun randomLong() = BigInteger(randomByteArray(8)).toLong()
 
         /** @return a (random) int128 */
-        @JvmStatic @Synchronized fun randomInt128() = randomByteArray(16)
+        @JvmStatic
+        @Synchronized
+        fun randomInt128() = randomByteArray(16)
 
         /** @return a (random) int256 */
-        @JvmStatic @Synchronized fun randomInt256() = randomByteArray(32)
+        @JvmStatic
+        @Synchronized
+        fun randomInt256() = randomByteArray(32)
     }
 }

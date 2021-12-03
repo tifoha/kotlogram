@@ -3,7 +3,6 @@ package com.github.badoualy.telegram.tl.api.account;
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLBytes;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,14 +20,10 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLBytesSerial
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLTmpPassword extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0xdb64fd34;
-
-    protected TLBytes tmpPassword;
-
-    protected int validUntil;
-
     private final String _constructor = "account.tmpPassword#db64fd34";
+    protected TLBytes tmpPassword;
+    protected int validUntil;
 
     public TLTmpPassword() {
     }

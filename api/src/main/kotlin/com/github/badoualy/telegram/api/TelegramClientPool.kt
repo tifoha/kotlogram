@@ -1,9 +1,9 @@
 package com.github.badoualy.telegram.api
 
-import org.slf4j.LoggerFactory
-import org.slf4j.MarkerFactory
 import java.util.*
 import kotlin.concurrent.schedule
+import org.slf4j.LoggerFactory
+import org.slf4j.MarkerFactory
 
 /**
  * Util class to cache clients some time before closing them to be able to re-use them if it's likely that
@@ -28,7 +28,12 @@ class TelegramClientPool private constructor(name: String) {
      * @param expiresIn time before expiration (in ms)
      */
     @JvmOverloads
-    fun put(id: Long, client: TelegramClient, listener: OnClientTimeoutListener?, expiresIn: Long = DEFAULT_EXPIRATION_DELAY) {
+    fun put(
+        id: Long,
+        client: TelegramClient,
+        listener: OnClientTimeoutListener?,
+        expiresIn: Long = DEFAULT_EXPIRATION_DELAY
+    ) {
         logger.debug(marker, "Adding client with id $id")
         synchronized(this) {
             // Already have a client with this id, close the new one and reset timer
@@ -79,16 +84,16 @@ class TelegramClientPool private constructor(name: String) {
 
     fun onTimeout(id: Long) {
         val timeout =
-                synchronized(this) {
-                    if (expireMap.getOrDefault(id, 0) <= System.currentTimeMillis()) {
-                        val client = getAndRemove(id)
-                        if (client != null) {
-                            logger.info(marker, "$id client timeout")
-                            client.close(false)
-                            true
-                        } else false
+            synchronized(this) {
+                if (expireMap.getOrDefault(id, 0) <= System.currentTimeMillis()) {
+                    val client = getAndRemove(id)
+                    if (client != null) {
+                        logger.info(marker, "$id client timeout")
+                        client.close(false)
+                        true
                     } else false
-                }
+                } else false
+            }
         if (timeout)
             listenerMap.remove(id)?.onClientTimeout(id)
     }

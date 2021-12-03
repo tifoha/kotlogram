@@ -3,7 +3,6 @@ package com.github.badoualy.telegram.tl.api.upload;
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.storage.TLAbsFileType;
 import com.github.badoualy.telegram.tl.core.TLBytes;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,16 +22,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLBytesSerial
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLFile extends TLAbsFile {
-
     public static final int CONSTRUCTOR_ID = 0x96a18d5;
-
-    protected TLAbsFileType type;
-
-    protected int mtime;
-
-    protected TLBytes bytes;
-
     private final String _constructor = "upload.file#96a18d5";
+    protected TLAbsFileType type;
+    protected int mtime;
+    protected TLBytes bytes;
 
     public TLFile() {
     }

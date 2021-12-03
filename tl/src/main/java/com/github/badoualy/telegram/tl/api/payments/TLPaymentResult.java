@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api.payments;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.TLAbsUpdates;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,12 +15,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLPaymentResult extends TLAbsPaymentResult {
-
     public static final int CONSTRUCTOR_ID = 0x4e5f810d;
-
-    protected TLAbsUpdates updates;
-
     private final String _constructor = "payments.paymentResult#4e5f810d";
+    protected TLAbsUpdates updates;
 
     public TLPaymentResult() {
     }

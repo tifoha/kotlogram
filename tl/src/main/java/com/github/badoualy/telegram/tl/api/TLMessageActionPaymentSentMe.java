@@ -2,7 +2,6 @@ package com.github.badoualy.telegram.tl.api;
 
 import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.core.TLBytes;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,24 +27,15 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLStringSeria
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLMessageActionPaymentSentMe extends TLAbsMessageAction {
-
     public static final int CONSTRUCTOR_ID = 0x8f31b327;
-
-    protected int flags;
-
-    protected String currency;
-
-    protected long totalAmount;
-
-    protected TLBytes payload;
-
-    protected TLPaymentRequestedInfo info;
-
-    protected String shippingOptionId;
-
-    protected TLPaymentCharge charge;
-
     private final String _constructor = "messageActionPaymentSentMe#8f31b327";
+    protected int flags;
+    protected String currency;
+    protected long totalAmount;
+    protected TLBytes payload;
+    protected TLPaymentRequestedInfo info;
+    protected String shippingOptionId;
+    protected TLPaymentCharge charge;
 
     public TLMessageActionPaymentSentMe() {
     }
@@ -91,8 +81,7 @@ public class TLMessageActionPaymentSentMe extends TLAbsMessageAction {
         currency = readTLString(stream);
         totalAmount = readLong(stream);
         payload = readTLBytes(stream, context);
-        info = (flags & 1) != 0 ? readTLObject(stream, context, TLPaymentRequestedInfo.class,
-                                               TLPaymentRequestedInfo.CONSTRUCTOR_ID) : null;
+        info = (flags & 1) != 0 ? readTLObject(stream, context, TLPaymentRequestedInfo.class, TLPaymentRequestedInfo.CONSTRUCTOR_ID) : null;
         shippingOptionId = (flags & 2) != 0 ? readTLString(stream) : null;
         charge = readTLObject(stream, context, TLPaymentCharge.class, TLPaymentCharge.CONSTRUCTOR_ID);
     }

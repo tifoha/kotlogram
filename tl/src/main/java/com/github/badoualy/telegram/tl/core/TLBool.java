@@ -1,7 +1,6 @@
 package com.github.badoualy.telegram.tl.core;
 
 import com.github.badoualy.telegram.tl.exception.InvalidConstructorIdException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -36,8 +35,8 @@ public abstract class TLBool extends TLObject {
             return false;
 
         throw new InvalidConstructorIdException("Wrong TLBool constructor id. Found " + Integer.toHexString(constructorId)
-                                                        + ", expected: " + Integer.toHexString(TLBoolTrue.CONSTRUCTOR_ID)
-                                                        + " or " + Integer.toHexString(TLBoolFalse.CONSTRUCTOR_ID));
+                + ", expected: " + Integer.toHexString(TLBoolTrue.CONSTRUCTOR_ID)
+                + " or " + Integer.toHexString(TLBoolFalse.CONSTRUCTOR_ID));
     }
 
     @Override

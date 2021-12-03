@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.auth.TLAuthorization;
 import com.github.badoualy.telegram.tl.core.TLBytes;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,12 +20,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.computeTLBytesSerial
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestAuthCheckPassword extends TLMethod<TLAuthorization> {
-
     public static final int CONSTRUCTOR_ID = 0xa63011e;
-
-    protected TLBytes passwordHash;
-
     private final String _constructor = "auth.checkPassword#a63011e";
+    protected TLBytes passwordHash;
 
     public TLRequestAuthCheckPassword() {
     }
@@ -43,9 +39,7 @@ public class TLRequestAuthCheckPassword extends TLMethod<TLAuthorization> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLAuthorization)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLAuthorization) response;
     }

@@ -4,7 +4,6 @@ import com.github.badoualy.telegram.tl.TLContext;
 import com.github.badoualy.telegram.tl.api.TLAbsContactLink;
 import com.github.badoualy.telegram.tl.api.TLAbsUser;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,16 +17,11 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLLink extends TLObject {
-
     public static final int CONSTRUCTOR_ID = 0x3ace484c;
-
-    protected TLAbsContactLink myLink;
-
-    protected TLAbsContactLink foreignLink;
-
-    protected TLAbsUser user;
-
     private final String _constructor = "contacts.link#3ace484c";
+    protected TLAbsContactLink myLink;
+    protected TLAbsContactLink foreignLink;
+    protected TLAbsUser user;
 
     public TLLink() {
     }

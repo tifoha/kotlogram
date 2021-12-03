@@ -5,7 +5,6 @@ import com.github.badoualy.telegram.tl.api.TLAbsInputPrivacyKey;
 import com.github.badoualy.telegram.tl.api.account.TLPrivacyRules;
 import com.github.badoualy.telegram.tl.core.TLMethod;
 import com.github.badoualy.telegram.tl.core.TLObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,12 +18,9 @@ import static com.github.badoualy.telegram.tl.TLObjectUtils.SIZE_CONSTRUCTOR_ID;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public class TLRequestAccountGetPrivacy extends TLMethod<TLPrivacyRules> {
-
     public static final int CONSTRUCTOR_ID = 0xdadbc950;
-
-    protected TLAbsInputPrivacyKey key;
-
     private final String _constructor = "account.getPrivacy#dadbc950";
+    protected TLAbsInputPrivacyKey key;
 
     public TLRequestAccountGetPrivacy() {
     }
@@ -41,9 +37,7 @@ public class TLRequestAccountGetPrivacy extends TLMethod<TLPrivacyRules> {
             throw new IOException("Unable to parse response");
         }
         if (!(response instanceof TLPrivacyRules)) {
-            throw new IOException(
-                    "Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response
-                            .getClass().getCanonicalName());
+            throw new IOException("Incorrect response type, expected " + getClass().getCanonicalName() + ", found " + response.getClass().getCanonicalName());
         }
         return (TLPrivacyRules) response;
     }

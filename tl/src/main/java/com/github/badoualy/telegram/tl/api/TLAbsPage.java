@@ -14,7 +14,6 @@ import com.github.badoualy.telegram.tl.core.TLVector;
  * @see <a href="http://github.com/badoualy/kotlogram">http://github.com/badoualy/kotlogram</a>
  */
 public abstract class TLAbsPage extends TLObject {
-
     protected TLVector<TLAbsPageBlock> blocks;
 
     protected TLVector<TLAbsPhoto> photos;
